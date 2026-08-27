@@ -50,7 +50,9 @@ main.content { padding: 0; margin: 0; max-width: none; }
 .band { padding: 48px 0 52px; margin-left: calc(50% - 50vw); margin-right: calc(50% - 50vw); padding-left: calc(50vw - 50%); padding-right: calc(50vw - 50%); }
 .band.light { background: $dss-light; }
 .band.blue { background: $dss-blue; color: #fff; h2, p { color: #fff; } }
-.wrap { max-width: 1180px; margin: 0 auto; padding: 0 28px; }
+// The content column is the IQSS page's: 1312 px (1368 with this padding). The navbar and footer sit on the same column.
+.wrap { max-width: 1368px; margin: 0 auto; padding: 0 28px; }
+.navbar .navbar-container, .nav-footer { max-width: 1368px; margin-left: auto; margin-right: auto; padding-left: 28px; padding-right: 28px; }
 
 h1 { font-size: 40px; line-height: 1.15; margin: 0 0 12px; text-wrap: balance; }
 h2 { font-size: 28px; line-height: 1.25; margin: 0 0 10px; padding-bottom: 0; border-bottom: 0; text-wrap: balance; }
@@ -138,6 +140,7 @@ details.fold[open] { padding-bottom: 22px; }
 // Footer.
 .nav-footer { border-top: 1px solid $dss-rule; padding: 22px 0 36px; font-size: 12.5px; }
 .nav-footer a { color: $body-color; font-weight: 500; }
+footer.footer .nav-footer { padding-left: 28px; padding-right: 28px; } // Quarto's own 12.5 px would win at lower specificity
 
 @media (max-width: 900px) { .stage, .stage.page-columns { grid-template-columns: 1fr; } .stage > .hexcard { grid-column: 1 !important; } .hexcard .arrow { transform: rotate(90deg); } }
 @media (max-width: 760px) { .rows2, .elsewhere { grid-template-columns: 1fr; } h1 { font-size: 32px; } }

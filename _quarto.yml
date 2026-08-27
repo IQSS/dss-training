@@ -46,7 +46,7 @@ format:
     toc: false
     anchor-sections: false
     grid:
-      body-width: 1240px
+      body-width: 1400px
       sidebar-width: 0px
       margin-width: 0px
     include-in-header:
