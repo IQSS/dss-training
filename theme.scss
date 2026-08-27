@@ -100,6 +100,8 @@ details.fold[open] > summary::after { transform: rotate(-135deg) translate(-2px,
 details.fold > summary:hover h2 { text-decoration: underline; text-decoration-color: $dss-blue; text-underline-offset: 5px; }
 details.fold > summary:focus-visible { outline: 2px solid $dss-orange; outline-offset: 6px; border-radius: 2px; }
 details.fold[open] > summary { margin-bottom: 18px; }
+.band.foldband { padding: 16px 0 18px; } // half the usual band; closed, it is one line
+details.fold[open] { padding-bottom: 22px; }
 @media (prefers-reduced-motion: no-preference) { details.fold > summary::after { transition: transform 0.2s; } }
 
 // The catalogue rows.
