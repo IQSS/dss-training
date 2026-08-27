@@ -24,12 +24,12 @@ quarto preview    # builds, serves, and rebuilds on save
 quarto render     # builds to _site/
 ```
 
-`quarto render` runs `node build/render.mjs` itself before each render, but it looks for the included files before that step runs, so the first build on a fresh checkout needs `npm run build` once.
+`quarto render` runs `node src/render.mjs` itself before each render, but it looks for the included files before that step runs, so the first build on a fresh checkout needs `npm run build` once.
 
 ## How it is put together
 
 - `index.qmd` holds the page's prose and includes the generated parts.
-- `build/render.mjs` turns `catalogue.yml` into the honeycomb (an inline SVG), the catalogue rows, and the link lists.
+- `src/render.mjs` turns `catalogue.yml` into the honeycomb (an inline SVG), the catalogue rows, and the link lists.
 - `assets/comb.js` fills the card when a hexagon is clicked and applies the language chips. Without JavaScript the page still lists everything.
 - `theme.scss` carries the look, matched to the IQSS site.
 - `.github/workflows/publish.yml` deploys to GitHub Pages on every push to `main`.

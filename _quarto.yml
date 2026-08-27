@@ -3,7 +3,7 @@ project:
   output-dir: _site
   render:
     - index.qmd
-  pre-render: node build/render.mjs
+  pre-render: node src/render.mjs
   resources:
     - assets/
 

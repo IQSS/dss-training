@@ -4,7 +4,7 @@
   "type": "module",
   "description": "The IQSS Data Science Services training index: a Quarto site built from catalogue.yml",
   "scripts": {
-    "build": "node build/render.mjs"
+    "build": "node src/render.mjs"
   },
   "engines": {
     "node": ">=20"
