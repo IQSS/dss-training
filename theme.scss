@@ -44,7 +44,7 @@ body { font-size: 14.5px; line-height: 1.55; }
 .stage { grid-auto-columns: 0; }
 .stage > .graphic { grid-column: 1 !important; }
 .stage > .hexcard { grid-column: 2 !important; }
-#quarto-content { padding: 0; }
+#quarto-content { padding: 0; grid-template-rows: [content-top] auto [content-bottom] 0 [page-bottom] !important; } // Quarto's grid keeps a 60-px spacer row above the footer
 main.content { padding: 0; margin: 0; max-width: none; }
 #title-block-header { display: none; }
 .band { padding: 48px 0 52px; margin-left: calc(50% - 50vw); margin-right: calc(50% - 50vw); padding-left: calc(50vw - 50%); padding-right: calc(50vw - 50%); }
