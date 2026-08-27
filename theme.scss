@@ -90,6 +90,18 @@ p { margin: 0 0 10px; }
 .btns .dss-btn { padding: 11px 22px; font-size: 13.5px; }
 .band.blue .dss-btn { background: transparent; border-color: #fff; color: #fff; &:hover { background: rgba(#fff, 0.12); } }
 
+// The catalogue bands fold: a native details element, closed by default, its heading as the summary line.
+details.fold > summary { list-style: none; cursor: pointer; display: flex; align-items: baseline; gap: 16px; flex-wrap: wrap; }
+details.fold > summary::-webkit-details-marker { display: none; }
+details.fold > summary h2 { margin: 0; }
+details.fold > summary .fold-note { color: $dss-muted; font-size: 13.5px; }
+details.fold > summary::after { content: ""; width: 11px; height: 11px; margin-left: auto; align-self: center; border-right: 2px solid $dss-muted; border-bottom: 2px solid $dss-muted; transform: rotate(45deg) translate(-2px, -2px); }
+details.fold[open] > summary::after { transform: rotate(-135deg) translate(-2px, -2px); }
+details.fold > summary:hover h2 { text-decoration: underline; text-decoration-color: $dss-blue; text-underline-offset: 5px; }
+details.fold > summary:focus-visible { outline: 2px solid $dss-orange; outline-offset: 6px; border-radius: 2px; }
+details.fold[open] > summary { margin-bottom: 18px; }
+@media (prefers-reduced-motion: no-preference) { details.fold > summary::after { transition: transform 0.2s; } }
+
 // The catalogue rows.
 .rows2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px 40px; }
 .item { margin: 0; }

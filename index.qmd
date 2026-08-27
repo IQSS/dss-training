@@ -17,21 +17,35 @@ description: "Materials from our workshops and beginner's guides: R, Python, and
 
 ::: {.band .light}
 ::: {.wrap}
-<h2>Workshops</h2>
+```{=html}
+<details class="fold">
+<summary><h2>Workshops</h2><span class="fold-note">The same twelve workshops as a list, with a line on each</span></summary>
+```
 
 <p class="intro">Hands-on sessions of two to three hours, each with notes to read online and the materials to download and run. All are self-contained. Most were last taught in 2021; we are bringing them up to date.</p>
 
 {{< include _includes/workshops.qmd >}}
+
+```{=html}
+</details>
+```
 :::
 :::
 
 ::: {.band}
 ::: {.wrap}
-<h2>Beginner's guides</h2>
+```{=html}
+<details class="fold">
+<summary><h2>Beginner's guides</h2><span class="fold-note">The nine guides as a list, with a line on each</span></summary>
+```
 
 <p class="intro">Short, self-contained guides to the tools around the analysis: version control, editors, LaTeX, building a package, and two methods primers.</p>
 
 {{< include _includes/guides.qmd >}}
+
+```{=html}
+</details>
+```
 :::
 :::
 
