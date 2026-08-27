@@ -9,10 +9,10 @@
 # one the title links to).
 
 languages:
-  r:      { name: R,                 colour: "#3C72B4" }
-  python: { name: Python,            colour: "#C4963C" }
-  stata:  { name: Stata,             colour: "#7A5C93" }
-  tools:  { name: Tools and writing, colour: "#2F8A8A" }
+  r:      { name: R,                 color: "#3C72B4" }
+  python: { name: Python,            color: "#C4963C" }
+  stata:  { name: Stata,             color: "#7A5C93" }
+  tools:  { name: Tools and writing, color: "#2F8A8A" }
 
 kinds:
   workshop: Workshop
@@ -32,7 +32,7 @@ items:
     lang: python
     kind: workshop
     year: 2021
-    blurb: The basics of Python, through an example of analysing text data. For those with little or no Python.
+    blurb: The basics of Python, through an example of analyzing text data. For those with little or no Python.
     links:
       - { text: Open the notes, url: https://iqss.github.io/dss-workshops/PythonIntro.html }
       - { text: Download the materials (zip), url: https://github.com/IQSS/dss-workshops/raw/master/Python/PythonIntro.zip }
@@ -250,15 +250,15 @@ items:
     links:
       - { text: Open the guide, url: https://iqss.github.io/dss-webscrape/ }
 
-# The honeycomb: rows of seven, staggered. A slot is an item id, a group id, or `hub`. Colour follows the
+# The honeycomb: rows of seven, staggered. A slot is an item id, a group id, or `hub`. Color follows the
 # item's language; the hub is white.
 comb:
   hub:
     hex: Request a|workshop
     icon: presentation
-    eyebrow: For departments, labs, and courses
+    eyebrow: For departments, labs, and centers
     title: Request a workshop
-    text: "We teach these topics, and others, for groups at Harvard and MIT: a department, a lab, a course. Tell us who, what, and when."
+    text: "We teach these topics, and others, for groups at Harvard and MIT: a department, a lab, a center. Tell us who, what, and when."
     button: Request a workshop
   groups:
     - id: getting-started

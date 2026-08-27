@@ -34,4 +34,4 @@ quarto render     # builds to _site/
 - `theme.scss` carries the look, matched to the IQSS site.
 - `.github/workflows/publish.yml` deploys to GitHub Pages on every push to `main`.
 
-Icons are from [Lucide](https://lucide.dev/) (ISC licence).
+Icons are from [Lucide](https://lucide.dev/) (ISC license).

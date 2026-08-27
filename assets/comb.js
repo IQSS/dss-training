@@ -7,9 +7,9 @@
   const card = document.getElementById("card");
   const esc = s => String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;");
   const meta = it => [D.kinds[it.kind], it.lang !== "tools" ? D.languages[it.lang] : null, it.year].filter(Boolean).join(" · ");
-  const link = (l, i) => `<a class="dss-btn${i ? " ghost" : ""}" href="${l.url}">${esc(l.text)}</a>`;
+  const link = (l, i) => `<a class="dss-btn${i ? " ghost" : ""}" href="${l.url}" target="_blank" rel="noopener">${esc(l.text)}</a>`; // materials open in a new tab; the index stays put
   const itemCard = it => `<p class="eyebrow">${esc(meta(it))}</p><h4>${esc(it.title)}</h4><p>${esc(it.blurb)}</p><div class="links">${it.links.map(link).join("")}</div>`;
-  const rows = ids => `<ul class="rows">${ids.map(id => { const it = D.items[id]; return `<li><a href="${it.links[0].url}">${esc(it.title)}</a><span>${esc(meta(it))}</span></li>`; }).join("")}</ul>`;
+  const rows = ids => `<ul class="rows">${ids.map(id => { const it = D.items[id]; return `<li><a href="${it.links[0].url}" target="_blank" rel="noopener">${esc(it.title)}</a><span>${esc(meta(it))}</span></li>`; }).join("")}</ul>`;
 
   function show(key) {
     document.querySelectorAll(".hex.on").forEach(e => e.classList.remove("on"));

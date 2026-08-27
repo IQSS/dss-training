@@ -44,7 +44,7 @@ for (const l of [...cat.elsewhere.harvard, ...cat.elsewhere.afield]) {
 const R = 100, W = Math.sqrt(3) * R;
 const f1 = v => v.toFixed(1);
 const esc = s => String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/"/g, "&quot;");
-const mix = (hex, f, to = 255) => { // f of the colour, the rest white (or black)
+const mix = (hex, f, to = 255) => { // f of the color, the rest white (or black)
   const n = parseInt(hex.slice(1), 16), c = [n >> 16, (n >> 8) & 255, n & 255].map(v => Math.round(v * f + to * (1 - f)));
   return "#" + c.map(v => v.toString(16).padStart(2, "0")).join("");
 };
@@ -79,14 +79,16 @@ function comb() {
       return out.push(hex({ cx, cy, fill: "#fff", stroke: CHARCOAL, ink: CHARCOAL, label: h.hex, iconName: h.icon, big: true, key: "hub", langs: Object.keys(LANG).join(" "), kinds: Object.keys(cat.kinds).join(" "), title: h.title }));
     }
     const g = groups[slot];
-    if (g) { const col = LANG[g.lang].colour; return out.push(hex({ cx, cy, fill: col, stroke: darken(col), ink: "#fff", label: g.hex, iconName: g.icon, badge: g.items.length, key: g.id, langs: g.lang, kinds: [...new Set(g.items.map(id => items[id].kind))].join(" "), title: `${g.hex.replace(/\|/g, " ")}: ${g.items.length} items` })); }
-    const it = items[slot], col = LANG[it.lang].colour;
+    if (g) { const col = LANG[g.lang].color; return out.push(hex({ cx, cy, fill: col, stroke: darken(col), ink: "#fff", label: g.hex, iconName: g.icon, badge: g.items.length, key: g.id, langs: g.lang, kinds: [...new Set(g.items.map(id => items[id].kind))].join(" "), title: `${g.hex.replace(/\|/g, " ")}: ${g.items.length} items` })); }
+    const it = items[slot], col = LANG[it.lang].color;
     out.push(hex({ cx, cy, fill: col, stroke: darken(col), ink: "#fff", label: it.hex, iconName: it.icon, key: it.id, langs: it.lang, kinds: it.kind, title: it.title }));
   }));
-  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${f1(width)} ${f1(height)}" role="group" aria-label="Our workshops and guides, one hexagon each, and a request for a workshop of your own in the centre">${out.join("")}</svg>`;
+  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${f1(width)} ${f1(height)}" role="group" aria-label="Our workshops and guides, one hexagon each, and a request for a workshop of your own in the center">${out.join("")}</svg>`;
 }
 
 // ---- the page parts ----
+// Links to materials and to other groups' sites open in a new tab (this page is an index, and stays put); links to
+// DSS's and IQSS's own pages, in the navbar, footer, and the events band, stay in the tab. The card script does the same.
 const qmd = html => "```{=html}\n" + html + "\n```\n";
 const chip = (v, l, on = false) => `<button type="button" data-filter="${v}" aria-pressed="${on}">${esc(l)}</button>`;
 const chips = `<div class="chips" role="group" aria-label="Show only"><span class="lbl">Show</span>` + chip("all", "All", true) +
@@ -94,19 +96,19 @@ const chips = `<div class="chips" role="group" aria-label="Show only"><span clas
   Object.entries(cat.kinds).map(([k, v]) => chip("kind:" + k, v + "s")).join("") + `</div>`;
 const data = { languages: Object.fromEntries(Object.entries(LANG).map(([k, v]) => [k, v.name])), kinds: cat.kinds, urls: cat.urls, items, groups, hub: cat.comb.hub };
 const combPart = chips +
-  `<div class="stage"><div class="graphic">${comb()}</div><div class="hexcard" id="card" aria-live="polite"><p class="eyebrow">How this works</p><h4><span class="arrow">${icon("arrow-left", 22, "#1e1e1e")}</span>Click a hexagon</h4><p>Each one is a workshop or a guide. Click it and its description and links appear here. The buttons above the grid filter by language or by kind; the centre hexagon is for groups who would like to request a workshop of their own.</p></div></div>` +
+  `<div class="stage"><div class="graphic">${comb()}</div><div class="hexcard" id="card" aria-live="polite"><p class="eyebrow">How this works</p><h4><span class="arrow">${icon("arrow-left", 22, "#1e1e1e")}</span>Click a hexagon</h4><p>Each one is a workshop or a guide. Click it and its description and links appear here. The buttons above the grid filter by language or by kind; the center hexagon is for groups who would like to request a workshop of their own.</p></div></div>` +
   `<script type="application/json" id="dss-catalogue">${JSON.stringify(data).replace(/</g, "\\u003c")}</script><script src="assets/comb.js" defer></script>`;
 
 const SHORT = { "Open the notes": "Notes", "Download the materials (zip)": "Materials (zip)", "Code on GitHub": "Code", "Data on Dataverse": "Data" };
 const row = (it, showLang) => `<article class="item" data-lang="${it.lang}" data-kind="${it.kind}">
-  <h4><a href="${it.links[0].url}">${esc(it.title)}</a></h4>
-  <p class="meta"><i class="dot" style="background:${LANG[it.lang].colour}"></i>${[showLang && it.lang !== "tools" ? LANG[it.lang].name : null, cat.kinds[it.kind].toLowerCase(), it.year].filter(Boolean).join(" · ")}</p>
+  <h4><a href="${it.links[0].url}" target="_blank" rel="noopener">${esc(it.title)}</a></h4>
+  <p class="meta"><i class="dot" style="background:${LANG[it.lang].color}"></i>${[showLang && it.lang !== "tools" ? LANG[it.lang].name : null, cat.kinds[it.kind].toLowerCase(), it.year].filter(Boolean).join(" · ")}</p>
   <p>${esc(it.blurb)}</p>
-  <p class="rowlinks">${it.links.map(l => `<a href="${l.url}">${esc(SHORT[l.text] || l.text)}</a>`).join("")}</p>
+  <p class="rowlinks">${it.links.map(l => `<a href="${l.url}" target="_blank" rel="noopener">${esc(SHORT[l.text] || l.text)}</a>`).join("")}</p>
 </article>`;
 const workshopsPart = cat.workshops.map(w => `<h3 class="sub" data-lang="${w.lang}" data-kind="workshop">${esc(w.heading)}</h3><div class="rows2">${w.items.map(id => row(items[id], false)).join("")}</div>`).join("");
 const guidesPart = `<div class="rows2">${cat.guides.map(id => row(items[id], true)).join("")}</div>`;
-const linkList = list => `<ul class="elsewhere">${list.map(l => `<li><a href="${l.url}">${esc(l.title)}</a><span>${esc(l.text)}</span></li>`).join("")}</ul>`;
+const linkList = list => `<ul class="elsewhere">${list.map(l => `<li><a href="${l.url}" target="_blank" rel="noopener">${esc(l.title)}</a><span>${esc(l.text)}</span></li>`).join("")}</ul>`;
 const elsewherePart = linkList(cat.elsewhere.harvard) + `<h3 class="sub">Further afield</h3>` + linkList(cat.elsewhere.afield);
 
 mkdirSync(OUT, { recursive: true });

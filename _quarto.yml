@@ -45,7 +45,6 @@ format:
     page-layout: full
     toc: false
     anchor-sections: false
-    link-external-newwindow: true
     grid:
       body-width: 1240px
       sidebar-width: 0px
