@@ -69,8 +69,8 @@ p { margin: 0 0 10px; }
 .stage { display: grid; grid-template-columns: minmax(0, 1fr) 300px; gap: 26px; align-items: start; }
 .graphic { min-width: 0; }
 .graphic svg { display: block; width: 100%; height: auto; }
-.hex { cursor: pointer; }
-.hex:focus-visible { outline: none; }
+.hex { cursor: pointer; outline: none; }
+.hex:focus, .hex:focus-visible { outline: none; } // the browser's focus rectangle; keyboard focus shows on the polygon instead
 .hex:hover > polygon, .hex.on > polygon, .hex:focus-visible > polygon { stroke: $body-color; stroke-width: 7; }
 .hexcard { background: $dss-light; border-radius: 4px; padding: 18px 20px 20px; min-height: 260px; }
 .hexcard .hint { color: $dss-muted; font-size: 13.5px; }

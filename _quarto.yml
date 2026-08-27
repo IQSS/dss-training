@@ -17,6 +17,7 @@ website:
   search: false
   navbar:
     title: false
+    pinned: true
     logo: assets/dss-logo.svg
     logo-alt: "Data Science Services"
     logo-href: https://www.iq.harvard.edu/data-science-services
