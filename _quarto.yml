@@ -1,0 +1,54 @@
+project:
+  type: website
+  output-dir: _site
+  render:
+    - index.qmd
+  pre-render: node build/render.mjs
+  resources:
+    - assets/
+
+website:
+  title: "DSS Training Materials"
+  site-url: https://iqss.github.io/dss-training/
+  repo-url: https://github.com/IQSS/dss-training
+  description: "Materials from the IQSS Data Science Services workshops and beginner's guides: R, Python, Stata, and the tools around them."
+  favicon: assets/favicon.png
+  open-graph: true
+  search: false
+  navbar:
+    title: false
+    logo: assets/dss-logo.svg
+    logo-alt: "Data Science Services"
+    logo-href: https://www.iq.harvard.edu/data-science-services
+    background: "#ffffff"
+    right:
+      - text: "Data Science Services"
+        href: https://www.iq.harvard.edu/data-science-services
+      - text: "Events"
+        href: https://www.iq.harvard.edu/events
+      - text: "Request help"
+        href: https://www.iq.harvard.edu/data-science-services/contact-us
+  page-footer:
+    left: "Data Science Services · Institute for Quantitative Social Science · Harvard University"
+    right:
+      - text: "Data Science Services"
+        href: https://www.iq.harvard.edu/data-science-services
+      - text: "Request help"
+        href: https://www.iq.harvard.edu/data-science-services/contact-us
+      - text: "IQSS"
+        href: https://www.iq.harvard.edu/
+
+format:
+  html:
+    theme: theme.scss
+    page-layout: full
+    toc: false
+    anchor-sections: false
+    link-external-newwindow: true
+    grid:
+      body-width: 1240px
+      sidebar-width: 0px
+      margin-width: 0px
+    include-in-header:
+      - text: |
+          <meta name="theme-color" content="#3C72B4">

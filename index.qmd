@@ -1,0 +1,56 @@
+---
+title: "Training materials"
+description: "Materials from our workshops and beginner's guides: R, Python, and Stata, and the tools around them. Open to anyone, at your own pace."
+---
+
+::: {.band}
+::: {.wrap}
+```{=html}
+<h1>Training materials</h1>
+```
+
+<p class="lede">Materials from our workshops and beginner's guides: R, Python, and Stata, and the tools around them. Open to anyone, at your own pace. Click a hexagon to open it; the centre one is for groups who would like a workshop of their own.</p>
+
+{{< include _includes/comb.qmd >}}
+:::
+:::
+
+::: {.band .light}
+::: {.wrap}
+<h2>Workshops</h2>
+
+<p class="intro">Hands-on sessions of two to three hours, each with notes to read online and the materials to download and run. All are self-contained. Most were last taught in 2021; we are bringing them up to date.</p>
+
+{{< include _includes/workshops.qmd >}}
+:::
+:::
+
+::: {.band}
+::: {.wrap}
+<h2>Beginner's guides</h2>
+
+<p class="intro">Short, self-contained guides to the tools around the analysis: version control, editors, LaTeX, building a package, and two methods primers.</p>
+
+{{< include _includes/guides.qmd >}}
+:::
+:::
+
+::: {.band .blue}
+::: {.wrap}
+<h2>Workshops through the year</h2>
+
+<p class="lede">When sessions are scheduled, the IQSS events page lists them. We also teach for departments, labs, and courses at Harvard and MIT, on any of these topics or one of your own.</p>
+
+<div class="btns"><a class="dss-btn" href="https://www.iq.harvard.edu/events">Upcoming events</a><a class="dss-btn" href="https://www.iq.harvard.edu/data-science-services/contact-us">Request a workshop</a></div>
+:::
+:::
+
+::: {.band}
+::: {.wrap}
+<h2>Elsewhere at Harvard</h2>
+
+<p class="intro">Training and support from other groups, for what we do not cover.</p>
+
+{{< include _includes/elsewhere.qmd >}}
+:::
+:::

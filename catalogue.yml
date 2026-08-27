@@ -1,0 +1,297 @@
+# catalogue.yml — everything the training index shows, and how it is arranged. build/render.mjs turns this into
+# the page's generated parts before every Quarto render. To add a material: add an item under `items`, then put
+# its id in a `comb.rows` slot (or in a group's `items`) and in `workshops` or `guides`; the build fails loudly
+# if an item is missing from either place.
+#
+# Item fields: id (short, stable); title; hex (the label on its hexagon, `|` breaks the line; two lines at most,
+# three if short); icon (a Lucide icon name, lucide.dev/icons); lang (r · python · stata · tools); kind
+# (workshop · guide); year (when the materials were last touched); blurb (one sentence); links (the first is the
+# one the title links to).
+
+languages:
+  r:      { name: R,                 colour: "#3C72B4" }
+  python: { name: Python,            colour: "#C4963C" }
+  stata:  { name: Stata,             colour: "#7A5C93" }
+  tools:  { name: Tools and writing, colour: "#2F8A8A" }
+
+kinds:
+  workshop: Workshop
+  guide: Guide
+
+urls:
+  landing: https://www.iq.harvard.edu/data-science-services
+  request: https://www.iq.harvard.edu/data-science-services/contact-us
+  events: https://www.iq.harvard.edu/events
+
+items:
+  # ---- workshops: github.com/IQSS/dss-workshops, notes at iqss.github.io/dss-workshops ----
+  - id: py-intro
+    title: Python Introduction
+    hex: Python|introduction
+    icon: book-open
+    lang: python
+    kind: workshop
+    year: 2021
+    blurb: The basics of Python, through an example of analysing text data. For those with little or no Python.
+    links:
+      - { text: Open the notes, url: https://iqss.github.io/dss-workshops/PythonIntro.html }
+      - { text: Download the materials (zip), url: https://github.com/IQSS/dss-workshops/raw/master/Python/PythonIntro.zip }
+  - id: py-scrape
+    title: Python Web Scraping
+    hex: Python|web scraping
+    icon: globe
+    lang: python
+    kind: workshop
+    year: 2021
+    blurb: "Scraping web pages with popular Python libraries. Intermediate: a few months of Python assumed."
+    links:
+      - { text: Open the notes, url: https://iqss.github.io/dss-workshops/PythonWebScrape.html }
+      - { text: Download the materials (zip), url: https://github.com/IQSS/dss-workshops/raw/master/Python/PythonWebScrape.zip }
+  - id: r-intro
+    title: R Introduction
+    hex: R|introduction
+    icon: book-open
+    lang: r
+    kind: workshop
+    year: 2021
+    blurb: Importing and manipulating data, packages, basic analyses, and common graphs. For those new to R.
+    links:
+      - { text: Open the notes, url: https://iqss.github.io/dss-workshops/Rintro.html }
+      - { text: Download the materials (zip), url: https://github.com/IQSS/dss-workshops/raw/master/R/Rintro.zip }
+  - id: r-wrangle
+    title: R Data Wrangling
+    hex: R data|wrangling
+    icon: filter
+    lang: r
+    kind: workshop
+    year: 2021
+    blurb: "Preparing messy data, through a real example. Intermediate: a few weeks of R assumed."
+    links:
+      - { text: Open the notes, url: https://iqss.github.io/dss-workshops/RDataWrangling.html }
+      - { text: Download the materials (zip), url: https://github.com/IQSS/dss-workshops/raw/master/R/RDataWrangling.zip }
+  - id: r-graphics
+    title: R Graphics
+    hex: R graphics|(ggplot2)
+    icon: chart-scatter
+    lang: r
+    kind: workshop
+    year: 2021
+    blurb: "ggplot2: layers, aesthetics, scales, facets, and themes. Intermediate."
+    links:
+      - { text: Open the notes, url: https://iqss.github.io/dss-workshops/Rgraphics.html }
+      - { text: Download the materials (zip), url: https://github.com/IQSS/dss-workshops/raw/master/R/Rgraphics.zip }
+  - id: r-models
+    title: R Regression Models
+    hex: R regression|models
+    icon: trending-up
+    lang: r
+    kind: workshop
+    year: 2021
+    blurb: Multiple regression, categorical predictors, diagnostics, and model comparison in R.
+    links:
+      - { text: Open the notes, url: https://iqss.github.io/dss-workshops/Rmodels.html }
+      - { text: Download the materials (zip), url: https://github.com/IQSS/dss-workshops/raw/master/R/Rmodels.zip }
+  - id: stata-intro
+    title: Stata Introduction
+    hex: Stata|introduction
+    icon: book-open
+    lang: stata
+    kind: workshop
+    year: 2021
+    blurb: Importing and manipulating data, and descriptive statistics. For those new to Stata.
+    links:
+      - { text: Open the notes, url: https://iqss.github.io/dss-workshops/StataIntro.html }
+      - { text: Download the materials (zip), url: https://github.com/IQSS/dss-workshops/raw/master/Stata/StataIntro.zip }
+  - id: stata-data
+    title: Stata Data Management
+    hex: Stata data|management
+    icon: filter
+    lang: stata
+    kind: workshop
+    year: 2021
+    blurb: Generating and replacing variables, missing values, types, merging and appending, summary data sets.
+    links:
+      - { text: Open the notes, url: https://iqss.github.io/dss-workshops/StataDataManage.html }
+      - { text: Download the materials (zip), url: https://github.com/IQSS/dss-workshops/raw/master/Stata/StataDataManage.zip }
+  - id: stata-graphics
+    title: Stata Graphics
+    hex: Stata|graphics
+    icon: chart-column
+    lang: stata
+    kind: workshop
+    year: 2021
+    blurb: "Univariate and bivariate graphs in Stata: histograms, scatterplots, and more."
+    links:
+      - { text: Open the notes, url: https://iqss.github.io/dss-workshops/StataGraphics.html }
+      - { text: Download the materials (zip), url: https://github.com/IQSS/dss-workshops/raw/master/Stata/StataGraphics.zip }
+  - id: stata-models
+    title: Stata Regression Models
+    hex: Stata regression|models
+    icon: trending-up
+    lang: stata
+    kind: workshop
+    year: 2021
+    blurb: Models for continuous and binary outcomes, saving results, and quantities of interest.
+    links:
+      - { text: Open the notes, url: https://iqss.github.io/dss-workshops/StataModels.html }
+      - { text: Download the materials (zip), url: https://github.com/IQSS/dss-workshops/raw/master/Stata/StataModels.zip }
+  - id: ds-tools
+    title: Data Science Tools
+    hex: Data science|tools
+    icon: wrench
+    lang: tools
+    kind: workshop
+    year: 2021
+    blurb: "Languages, statistics packages, version control, editors, and IDEs: the options and their trade-offs."
+    links:
+      - { text: Open the notes, url: https://iqss.github.io/dss-workshops/DataScienceTools.html }
+      - { text: Download the materials (zip), url: https://github.com/IQSS/dss-workshops/raw/master/General/DataScienceTools.zip }
+  - id: prog-intro
+    title: Introduction to Programming for Researchers
+    hex: Introduction to|programming
+    icon: code
+    lang: tools
+    kind: workshop
+    year: 2018
+    blurb: Programming for researchers, before any particular language.
+    links:
+      - { text: Code on GitHub, url: https://github.com/susobaleato/ds-prog }
+      - { text: Data on Dataverse, url: "https://dataverse.harvard.edu/dataset.xhtml?persistentId=doi:10.7910/DVN/IZBIE9" }
+
+  # ---- guides: each its own repository under github.com/IQSS ----
+  - id: git
+    title: "Git and GitHub: A Beginner's Guide"
+    hex: Git and|GitHub
+    icon: git-branch
+    lang: tools
+    kind: guide
+    year: 2024
+    blurb: Creating and cloning repositories, and Git from the command line.
+    links:
+      - { text: Open the guide, url: https://iqss.github.io/git_guide/ }
+  - id: gh-pages
+    title: "GitHub Pages: A Beginner's Guide"
+    hex: GitHub|Pages
+    icon: layout-template
+    lang: tools
+    kind: guide
+    year: 2025
+    blurb: A personal website on GitHub Pages, from a template.
+    links:
+      - { text: Open the guide, url: https://iqss.github.io/github_pages_guide/ }
+  - id: vscode
+    title: "Visual Studio Code: A Beginner's Guide"
+    hex: VS Code
+    icon: file-code
+    lang: tools
+    kind: guide
+    year: 2024
+    blurb: Installing VS Code, with our recommended settings, keybindings, and shortcuts.
+    links:
+      - { text: Open the guide, url: https://iqss.github.io/vscode-settings/ }
+  - id: emacs
+    title: "Emacs: A Beginner's Guide"
+    hex: Emacs
+    icon: terminal
+    lang: tools
+    kind: guide
+    year: 2024
+    blurb: Installing Emacs with our configuration, and the functions you will use every day.
+    links:
+      - { text: Open the guide, url: https://iqss.github.io/emacs_guide/ }
+  - id: latex
+    title: "LaTeX: A Beginner's Guide"
+    hex: LaTeX
+    icon: sigma
+    lang: tools
+    kind: guide
+    year: 2024
+    blurb: "Ways to write LaTeX: Overleaf, VS Code, and Emacs compared, with GitHub and Copilot."
+    links:
+      - { text: Open the guide, url: https://iqss.github.io/latex_guide/ }
+  - id: overleaf
+    title: "Overleaf: A Beginner's Guide"
+    hex: Overleaf
+    icon: leaf
+    lang: tools
+    kind: guide
+    year: 2024
+    blurb: Signing up, editing, and collaborating on LaTeX documents online.
+    links:
+      - { text: Open the guide, url: https://iqss.github.io/overleaf_guide/ }
+  - id: rbuild
+    title: "Rbuild: Create Your Own Packages in R"
+    hex: R packages|(Rbuild)
+    icon: package
+    lang: r
+    kind: guide
+    year: 2019
+    blurb: "Building your own R package: structure, best practice, version control, and RStudio."
+    links:
+      - { text: Open the guide, url: https://iqss.github.io/dss-rbuild }
+  - id: matching
+    title: Matching and Weighting for Causal Inference
+    hex: Matching and|weighting
+    icon: scale
+    lang: r
+    kind: guide
+    year: 2025
+    blurb: "Propensity-score methods for confounding in observational studies: a primer and tutorial."
+    links:
+      - { text: Open the guide, url: https://iqss.github.io/dss-ps }
+  - id: selenium
+    title: Web Scraping with Selenium Python
+    hex: Web scraping|with Selenium
+    icon: mouse-pointer-click
+    lang: python
+    kind: guide
+    year: 2021
+    blurb: Scraping static and dynamic websites with Selenium Python.
+    links:
+      - { text: Open the guide, url: https://iqss.github.io/dss-webscrape/ }
+
+# The honeycomb: rows of seven, staggered. A slot is an item id, a group id, or `hub`. Colour follows the
+# item's language; the hub is white.
+comb:
+  hub:
+    hex: Request a|workshop
+    icon: presentation
+    eyebrow: For departments, labs, and courses
+    title: Request a workshop
+    text: "We teach these topics, and others, for groups at Harvard and MIT: a department, a lab, a course. Tell us who, what, and when."
+    button: Request a workshop
+  groups:
+    - id: getting-started
+      hex: Getting|started
+      icon: footprints
+      lang: tools
+      blurb: "Two sessions before any particular language: what programming is for a researcher, and which tools to choose."
+      items: [prog-intro, ds-tools]
+  rows:
+    - [py-intro, py-scrape, selenium, stata-intro, stata-data, stata-graphics, stata-models]
+    - [r-intro, r-wrangle, r-graphics, hub, r-models, matching, rbuild]
+    - [getting-started, vscode, emacs, git, gh-pages, latex, overleaf]
+
+# The catalogue beneath the comb, in the order shown.
+workshops:
+  - { heading: R, lang: r, items: [r-intro, r-wrangle, r-graphics, r-models] }
+  - { heading: Python, lang: python, items: [py-intro, py-scrape] }
+  - { heading: Stata, lang: stata, items: [stata-intro, stata-data, stata-graphics, stata-models] }
+  - { heading: Any language, lang: tools, items: [prog-intro, ds-tools] }
+guides: [git, gh-pages, vscode, emacs, latex, overleaf, rbuild, matching, selenium]
+
+# Elsewhere at Harvard, from the old Resources page (2024 capture; the deep links want checking now and then).
+# Quote any value that contains a comma: these are flow mappings, and a bare comma starts a new key.
+elsewhere:
+  harvard:
+    - { title: Center for Geographical Analysis, text: "GIS and spatial analysis: workshops and courses", url: https://gis.harvard.edu/teaching }
+    - { title: FAS Research Computing, text: "The cluster, and training in using it", url: https://rc.fas.harvard.edu/ }
+    - { title: Program on Survey Research, text: "Survey design and methods, at IQSS", url: https://psr.iq.harvard.edu/ }
+    - { title: Harvard Chan Bioinformatics Core, text: Bioinformatics training, url: https://bioinformatics.sph.harvard.edu/ }
+    - { title: Digital Arts and Humanities, text: "Digital methods for the humanities, FAS", url: https://digitalhumanities.fas.harvard.edu/ }
+    - { title: Digital Scholarship Support Group, text: Support across the schools, url: https://dssg.fas.harvard.edu/ }
+    - { title: "Research Computing Services, HBS", text: Statistical and data services at the Business School, url: https://www.hbs.edu/research-computing-services/about-us/statistical-and-data-services.aspx }
+    - { title: "Research Support Services, HGSE", text: Research support at the Graduate School of Education, url: https://its.gse.harvard.edu/services/research }
+  afield:
+    - { title: UCLA statistical methods and data analytics, text: "Worked examples in R, Stata, and more, from UCLA's OARC", url: https://stats.oarc.ucla.edu/ }
+    - { title: CRAN, text: "R itself, its packages, and their manuals", url: https://cran.r-project.org/ }

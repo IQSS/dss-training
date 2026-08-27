@@ -1,0 +1,16 @@
+{
+  "name": "dss-training",
+  "private": true,
+  "type": "module",
+  "description": "The IQSS Data Science Services training index: a Quarto site built from catalogue.yml",
+  "scripts": {
+    "build": "node build/render.mjs"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "dependencies": {
+    "lucide-static": "1.34.0",
+    "yaml": "2.9.0"
+  }
+}

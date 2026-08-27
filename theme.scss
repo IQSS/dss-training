@@ -1,0 +1,122 @@
+/*-- scss:defaults --*/
+// The IQSS site's own values, so the page reads as a sibling of the Data Science Services landing page:
+// Questrial for headings, Montserrat for text, band blue #3C72B4, button orange #BF5803, light band #F5F5F5.
+@import url("https://fonts.googleapis.com/css2?family=Questrial&family=Montserrat:wght@400;500;600&display=swap");
+
+$font-family-sans-serif: Montserrat, "Helvetica Neue", Arial, sans-serif;
+$headings-font-family: Questrial, Montserrat, sans-serif;
+$headings-font-weight: 400;
+$font-size-base: 0.95rem;
+$body-color: #1e1e1e;
+$body-bg: #ffffff;
+$primary: #3c72b4;
+$link-color: #3c72b4;
+$navbar-bg: #ffffff;
+$navbar-fg: #1e1e1e;
+$navbar-hl: #3c72b4;
+$footer-bg: #ffffff;
+$footer-fg: #5c677a;
+
+$dss-blue: #3c72b4;
+$dss-orange: #bf5803;
+$dss-light: #f5f5f5;
+$dss-muted: #5c677a;
+$dss-rule: #e3e6ea;
+
+/*-- scss:rules --*/
+html { overflow-x: hidden; }
+body { font-size: 14.5px; line-height: 1.55; }
+
+// Navbar: the wordmark at a readable size, the last link as the orange button.
+.navbar { border-bottom: 1px solid $dss-rule; padding-top: 14px; padding-bottom: 14px; }
+.navbar .navbar-brand img.navbar-logo, .navbar img.navbar-logo { max-height: 72px !important; height: 72px; width: auto; }
+.navbar .navbar-nav .nav-link { font-weight: 500; font-size: 14px; color: $body-color; }
+.navbar .navbar-nav .nav-item:last-child .nav-link {
+  background: $dss-orange; color: #fff; border-radius: 3px; padding: 8px 14px; margin-left: 8px;
+  &:hover { background: darken($dss-orange, 6%); color: #fff; }
+}
+
+// The content column is the whole width; bands break out to the viewport edge, their content sits in .wrap.
+// Quarto stamps its page-columns grid on the first block after the title; these are plain flow.
+.band.page-columns, .wrap.page-columns, .graphic.page-columns, .hexcard.page-columns { display: block; }
+.chips.page-columns { display: flex; }
+.stage.page-columns { grid-template-columns: minmax(0, 1fr) 300px; }
+.stage { grid-auto-columns: 0; }
+.stage > .graphic { grid-column: 1 !important; }
+.stage > .hexcard { grid-column: 2 !important; }
+#quarto-content { padding: 0; }
+main.content { padding: 0; margin: 0; max-width: none; }
+#title-block-header { display: none; }
+.band { padding: 48px 0 52px; margin-left: calc(50% - 50vw); margin-right: calc(50% - 50vw); padding-left: calc(50vw - 50%); padding-right: calc(50vw - 50%); }
+.band.light { background: $dss-light; }
+.band.blue { background: $dss-blue; color: #fff; h2, p { color: #fff; } }
+.wrap { max-width: 1180px; margin: 0 auto; padding: 0 28px; }
+
+h1 { font-size: 40px; line-height: 1.15; margin: 0 0 12px; text-wrap: balance; }
+h2 { font-size: 28px; line-height: 1.25; margin: 0 0 10px; padding-bottom: 0; border-bottom: 0; text-wrap: balance; }
+p { margin: 0 0 10px; }
+.lede { max-width: 72ch; font-size: 16px; }
+.intro { max-width: 72ch; margin-bottom: 22px; }
+.sub { font: 600 12.5px Montserrat, sans-serif; letter-spacing: 0.1em; text-transform: uppercase; color: $dss-muted; margin: 26px 0 12px; padding-top: 12px; border-top: 1px solid #dfe3e8; }
+
+// Chips, the comb, the card.
+.chips { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; margin: 14px 0 18px; }
+.chips .lbl { font-weight: 500; font-size: 12.5px; color: $dss-muted; margin-right: 4px; }
+.chips button { font: 500 12.5px Montserrat, sans-serif; padding: 5px 12px; border-radius: 999px; background: #eef1f5; color: $body-color; border: 1px solid transparent; cursor: pointer; }
+.chips button:hover { border-color: $dss-blue; }
+.chips button[aria-pressed="true"] { background: $dss-blue; color: #fff; }
+.chips button:focus-visible { outline: 2px solid $dss-orange; outline-offset: 2px; }
+.stage { display: grid; grid-template-columns: minmax(0, 1fr) 300px; gap: 26px; align-items: start; }
+.graphic { min-width: 0; }
+.graphic svg { display: block; width: 100%; height: auto; }
+.hex { cursor: pointer; }
+.hex:focus-visible { outline: none; }
+.hex:hover > polygon, .hex.on > polygon, .hex:focus-visible > polygon { stroke: $body-color; stroke-width: 7; }
+.hexcard { background: $dss-light; border-radius: 4px; padding: 18px 20px 20px; min-height: 260px; }
+.hexcard .hint { color: $dss-muted; font-size: 13.5px; }
+.hexcard .eyebrow, .eyebrow { font: 600 11.5px Montserrat, sans-serif; letter-spacing: 0.1em; text-transform: uppercase; color: $dss-muted; margin-bottom: 6px; }
+.hexcard h4 { font-family: Questrial, sans-serif; font-weight: 400; font-size: 21px; line-height: 1.25; margin: 0 0 8px; text-wrap: balance; }
+.hexcard p { font-size: 13.5px; }
+.hexcard .links { display: flex; flex-direction: column; gap: 8px; align-items: flex-start; margin-top: 12px; }
+.hexcard .rows { list-style: none; margin: 4px 0 0; padding: 0; display: flex; flex-direction: column; gap: 9px; }
+.hexcard .rows li { font-size: 13.5px; line-height: 1.4; display: flex; flex-direction: column; }
+.hexcard .rows a { color: $body-color; font-weight: 500; text-decoration: underline; text-decoration-color: $dss-blue; text-underline-offset: 2px; }
+.hexcard .rows span { font-size: 12px; color: $dss-muted; }
+.dss-btn { display: inline-block; background: $dss-orange; color: #fff; font: 500 12.5px Montserrat, sans-serif; padding: 8px 14px; border-radius: 3px; text-decoration: none; border: 1px solid $dss-orange; }
+.dss-btn:hover { background: darken($dss-orange, 6%); color: #fff; }
+.dss-btn.ghost { background: transparent; color: $dss-orange; }
+.dss-btn.ghost:hover { background: rgba($dss-orange, 0.08); color: $dss-orange; }
+.btns { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 18px; }
+.btns .dss-btn { padding: 11px 22px; font-size: 13.5px; }
+.band.blue .dss-btn { background: transparent; border-color: #fff; color: #fff; &:hover { background: rgba(#fff, 0.12); } }
+
+// The catalogue rows.
+.rows2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px 40px; }
+.item { margin: 0; }
+.item h4 { font-family: Montserrat, sans-serif; font-weight: 500; font-size: 16px; line-height: 1.35; margin: 0 0 4px; }
+.item h4 a { color: $body-color; text-decoration: none; &:hover { text-decoration: underline; text-decoration-color: $dss-blue; text-underline-offset: 3px; } }
+.item .meta { font-size: 12.5px; color: $dss-muted; margin: 0 0 6px; display: flex; align-items: center; gap: 7px; }
+.item .dot { width: 10px; height: 10px; border-radius: 50%; display: inline-block; }
+.item p { font-size: 13.5px; margin-bottom: 6px; }
+.item .rowlinks { display: flex; gap: 16px; margin: 0; }
+.item .rowlinks a { font-weight: 500; font-size: 13px; color: $dss-orange; text-decoration: none; &:hover { text-decoration: underline; text-underline-offset: 3px; } }
+
+// The language chips fade the comb and hide the rows that do not match.
+@each $l in r, python, stata, tools {
+  body[data-filter="#{$l}"] [data-lang]:not([data-lang~="#{$l}"]) { opacity: 0.22; }
+  body[data-filter="#{$l}"] .item:not([data-lang~="#{$l}"]), body[data-filter="#{$l}"] .sub:not([data-lang~="#{$l}"]) { display: none; }
+}
+@media (prefers-reduced-motion: no-preference) { [data-lang] { transition: opacity 0.2s; } }
+
+// Elsewhere at Harvard.
+.elsewhere { list-style: none; margin: 8px 0 0; padding: 0; display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px 40px; }
+.elsewhere li { display: flex; flex-direction: column; font-size: 13.5px; line-height: 1.45; }
+.elsewhere a { font-weight: 500; color: $body-color; text-decoration: underline; text-decoration-color: $dss-blue; text-underline-offset: 3px; }
+.elsewhere span { color: $dss-muted; font-size: 12.5px; }
+
+// Footer.
+.nav-footer { border-top: 1px solid $dss-rule; padding: 22px 0 36px; font-size: 12.5px; }
+.nav-footer a { color: $body-color; font-weight: 500; }
+
+@media (max-width: 900px) { .stage, .stage.page-columns { grid-template-columns: 1fr; } .stage > .hexcard { grid-column: 1 !important; } }
+@media (max-width: 760px) { .rows2, .elsewhere { grid-template-columns: 1fr; } h1 { font-size: 32px; } }
