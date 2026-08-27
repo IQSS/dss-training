@@ -1,4 +1,4 @@
-// comb.js — the card beside the honeycomb, and the language chips. Reads the JSON that build/render.mjs wrote
+// comb.js — the card beside the honeycomb, and the language chips. Reads the JSON that src/render.mjs wrote
 // into the page (#dss-catalogue). Without JavaScript the page still works: every item is listed beneath the comb.
 (() => {
   const el = document.getElementById("dss-catalogue");

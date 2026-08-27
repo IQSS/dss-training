@@ -1,4 +1,4 @@
-# catalogue.yml — everything the training index shows, and how it is arranged. build/render.mjs turns this into
+# catalogue.yml — everything the training index shows, and how it is arranged. src/render.mjs turns this into
 # the page's generated parts before every Quarto render. To add a material: add an item under `items`, then put
 # its id in a `comb.rows` slot (or in a group's `items`) and in `workshops` or `guides`; the build fails loudly
 # if an item is missing from either place.
