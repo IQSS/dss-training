@@ -96,7 +96,7 @@ const chips = `<div class="chips" role="group" aria-label="Show only"><span clas
   Object.entries(cat.kinds).map(([k, v]) => chip("kind:" + k, v + "s")).join("") + `</div>`;
 const data = { languages: Object.fromEntries(Object.entries(LANG).map(([k, v]) => [k, v.name])), kinds: cat.kinds, urls: cat.urls, items, groups, hub: cat.comb.hub };
 const combPart = chips +
-  `<div class="stage"><div class="graphic">${comb()}</div><div class="hexcard" id="card" aria-live="polite"><p class="eyebrow">How this works</p><h4><span class="arrow">${icon("arrow-left", 22, "#1e1e1e")}</span>Click a hexagon</h4><p>Each one is a workshop or a guide. Click it and its description and links appear here. The buttons above the grid filter by language or by kind; the center hexagon is for groups who would like to request a workshop of their own.</p></div></div>` +
+  `<div class="stage"><div class="graphic">${comb()}</div><div class="hexcard" id="card" aria-live="polite"><p class="eyebrow">How this works</p><h4><span class="arrow">${icon("arrow-left", 22, "#1e1e1e")}</span>Click a hexagon</h4><p>Each one is a workshop or a guide. Click it and its description and links appear here. The buttons above the grid filter by language or by kind; the center hexagon is for groups who would like a workshop of their own, when live workshops return in 2027.</p></div></div>` +
   `<script type="application/json" id="dss-catalogue">${JSON.stringify(data).replace(/</g, "\\u003c")}</script><script src="assets/comb.js" defer></script>`;
 
 const SHORT = { "Open the notes": "Notes", "Download the materials (zip)": "Materials (zip)", "Code on GitHub": "Code", "Data on Dataverse": "Data" };

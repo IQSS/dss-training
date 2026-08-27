@@ -254,12 +254,12 @@ items:
 # item's language; the hub is white.
 comb:
   hub:
-    hex: Request a|workshop
+    hex: Workshops|for groups
     icon: presentation
-    eyebrow: For departments, labs, and centers
-    title: Request a workshop
-    text: "We teach these topics, and others, for groups at Harvard and MIT: a department, a lab, a center. Tell us who, what, and when."
-    button: Request a workshop
+    eyebrow: Returning in 2027
+    title: Workshops for groups
+    text: "Live workshops for departments, labs, and centers across Harvard and MIT return in 2027, on any of these topics or one of your own. Tell us what you would want: the topic, the language, the format."
+    button: Tell us what you'd want
   groups:
     - id: getting-started
       hex: Getting|started
