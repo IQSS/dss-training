@@ -30,7 +30,7 @@ website:
       - text: "Request help"
         href: https://www.iq.harvard.edu/data-science-services/contact-us
   page-footer:
-    left: '<a href="https://www.iq.harvard.edu/" class="footer-logo-link"><img src="assets/iqss-mark.png" alt="Institute for Quantitative Social Science" class="footer-logo"></a><span>Data Science Services · Institute for Quantitative Social Science · Harvard University</span>'
+    left: '<a href="https://www.iq.harvard.edu/" class="footer-logo-link"><img src="assets/iqss-logo.png" alt="IQSS, the Institute for Quantitative Social Science" class="footer-logo"></a><span>Data Science Services · Institute for Quantitative Social Science · Harvard University</span>'
     right:
       - text: "Data Science Services"
         href: https://www.iq.harvard.edu/data-science-services
