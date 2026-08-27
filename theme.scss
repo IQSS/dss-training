@@ -78,6 +78,7 @@ p { margin: 0 0 10px; }
 .hexcard .eyebrow, .eyebrow { font: 600 11.5px Montserrat, sans-serif; letter-spacing: 0.1em; text-transform: uppercase; color: $dss-muted; margin-bottom: 6px; }
 .hexcard h4 { font-family: Questrial, sans-serif; font-weight: 400; font-size: 21px; line-height: 1.25; margin: 0 0 8px; text-wrap: balance; }
 .hexcard p { font-size: 13.5px; }
+.hexcard .when { color: $dss-muted; margin-top: -2px; }
 .hexcard .links { display: flex; flex-direction: column; gap: 8px; align-items: flex-start; margin-top: 12px; }
 .hexcard .rows { list-style: none; margin: 4px 0 0; padding: 0; display: flex; flex-direction: column; gap: 9px; }
 .hexcard .rows li { font-size: 13.5px; line-height: 1.4; display: flex; flex-direction: column; }

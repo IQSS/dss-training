@@ -146,18 +146,6 @@ items:
     links:
       - { text: Open the notes, url: https://iqss.github.io/dss-workshops/DataScienceTools.html }
       - { text: Download the materials (zip), url: https://github.com/IQSS/dss-workshops/raw/master/General/DataScienceTools.zip }
-  - id: prog-intro
-    title: Introduction to Programming for Researchers
-    hex: Introduction to|programming
-    icon: code
-    lang: tools
-    kind: workshop
-    year: 2018
-    blurb: Programming for researchers, before any particular language.
-    links:
-      - { text: Code on GitHub, url: https://github.com/susobaleato/ds-prog }
-      - { text: Data on Dataverse, url: "https://dataverse.harvard.edu/dataset.xhtml?persistentId=doi:10.7910/DVN/IZBIE9" }
-
   # ---- guides: each its own repository under github.com/IQSS ----
   - id: git
     title: "Git and GitHub: A Beginner's Guide"
@@ -260,24 +248,18 @@ comb:
     title: Workshops for groups
     text: "Live workshops for departments, labs, and centers across Harvard and MIT return in 2027, on any of these topics or one of your own. Tell us what you would want: the topic, the language, the format."
     button: Tell us what you'd want
-  groups:
-    - id: getting-started
-      hex: Getting|started
-      icon: footprints
-      lang: tools
-      blurb: "Two sessions before any particular language: what programming is for a researcher, and which tools to choose."
-      items: [prog-intro, ds-tools]
+  groups: []
   rows:
     - [py-intro, py-scrape, selenium, stata-intro, stata-data, stata-graphics, stata-models]
     - [r-intro, r-wrangle, r-graphics, hub, r-models, matching, rbuild]
-    - [getting-started, vscode, emacs, git, gh-pages, latex, overleaf]
+    - [ds-tools, vscode, emacs, git, gh-pages, latex, overleaf]
 
 # The catalogue beneath the comb, in the order shown.
 workshops:
   - { heading: R, lang: r, items: [r-intro, r-wrangle, r-graphics, r-models] }
   - { heading: Python, lang: python, items: [py-intro, py-scrape] }
   - { heading: Stata, lang: stata, items: [stata-intro, stata-data, stata-graphics, stata-models] }
-  - { heading: Any language, lang: tools, items: [prog-intro, ds-tools] }
+  - { heading: Any language, lang: tools, items: [ds-tools] }
 guides: [git, gh-pages, vscode, emacs, latex, overleaf, rbuild, matching, selenium]
 
 # Elsewhere at Harvard, from the old Resources page (2024 capture; the deep links want checking now and then).

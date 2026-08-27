@@ -22,7 +22,7 @@ description: "Materials from our workshops and beginner's guides: R, Python, and
 <summary><h2>Workshops</h2><span class="fold-note">The workshops as a list</span></summary>
 ```
 
-<p class="intro">Hands-on sessions of two to three hours, each with notes to read online and the materials to download and run. All are self-contained. Most were last taught in 2021; we are bringing them up to date.</p>
+<p class="intro">Hands-on sessions of two to three hours, each with notes to read online and the materials to download and run. All are self-contained.</p>
 
 {{< include _includes/workshops.qmd >}}
 
