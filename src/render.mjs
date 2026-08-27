@@ -57,10 +57,10 @@ function icon(name, size, stroke) {
   return `<svg xmlns="http://www.w3.org/2000/svg" width="${f1(size)}" height="${f1(size)}" viewBox="0 0 24 24" fill="none" stroke="${stroke}" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${src.slice(open + 1, close).trim()}</svg>`;
 }
 const pts = (cx, cy, r) => Array.from({ length: 6 }, (_, k) => { const a = Math.PI / 180 * (60 * k - 30); return f1(cx + r * Math.cos(a)) + "," + f1(cy + r * Math.sin(a)); }).join(" ");
-function hex({ cx, cy, fill, stroke, ink, label, iconName, big = false, badge = null, key, langs, title }) {
+function hex({ cx, cy, fill, stroke, ink, label, iconName, big = false, badge = null, key, langs, kinds, title }) {
   const r = R * 0.95, lines = label.split("|"), fs = R * (big ? 0.19 : lines.length > 2 ? 0.15 : 0.165), isz = R * (big ? 0.66 : 0.6);
   const y0 = cy + R * (lines.length === 1 ? 0.3 : lines.length === 2 ? 0.2 : 0.14) + fs;
-  return `<g class="hex" data-key="${key}" data-lang="${langs}" tabindex="0" role="button" aria-label="${esc(title)}">` +
+  return `<g class="hex" data-key="${key}" data-lang="${langs}" data-kind="${kinds}" tabindex="0" role="button" aria-label="${esc(title)}">` +
     `<polygon points="${pts(cx, cy, r)}" fill="${fill}" stroke="${stroke}" stroke-width="${f1(R * 0.04)}" stroke-linejoin="round"/>` +
     `<g transform="translate(${f1(cx - isz / 2)} ${f1(cy - R * 0.64)})">${icon(iconName, isz, ink)}</g>` +
     `<text x="${f1(cx)}" y="${f1(y0)}" text-anchor="middle" font-family="Montserrat, sans-serif" font-weight="${big ? 600 : 500}" font-size="${f1(fs)}" fill="${ink}">` +
@@ -76,33 +76,35 @@ function comb() {
     const cx = W / 2 + ci * W + (ri % 2 ? W / 2 : 0), cy = R + ri * 1.5 * R;
     if (slot === "hub") {
       const h = cat.comb.hub;
-      return out.push(hex({ cx, cy, fill: "#fff", stroke: CHARCOAL, ink: CHARCOAL, label: h.hex, iconName: h.icon, big: true, key: "hub", langs: Object.keys(LANG).join(" "), title: h.title }));
+      return out.push(hex({ cx, cy, fill: "#fff", stroke: CHARCOAL, ink: CHARCOAL, label: h.hex, iconName: h.icon, big: true, key: "hub", langs: Object.keys(LANG).join(" "), kinds: Object.keys(cat.kinds).join(" "), title: h.title }));
     }
     const g = groups[slot];
-    if (g) { const col = LANG[g.lang].colour; return out.push(hex({ cx, cy, fill: col, stroke: darken(col), ink: "#fff", label: g.hex, iconName: g.icon, badge: g.items.length, key: g.id, langs: g.lang, title: `${g.hex.replace(/\|/g, " ")}: ${g.items.length} items` })); }
+    if (g) { const col = LANG[g.lang].colour; return out.push(hex({ cx, cy, fill: col, stroke: darken(col), ink: "#fff", label: g.hex, iconName: g.icon, badge: g.items.length, key: g.id, langs: g.lang, kinds: [...new Set(g.items.map(id => items[id].kind))].join(" "), title: `${g.hex.replace(/\|/g, " ")}: ${g.items.length} items` })); }
     const it = items[slot], col = LANG[it.lang].colour;
-    out.push(hex({ cx, cy, fill: col, stroke: darken(col), ink: "#fff", label: it.hex, iconName: it.icon, key: it.id, langs: it.lang, title: it.title }));
+    out.push(hex({ cx, cy, fill: col, stroke: darken(col), ink: "#fff", label: it.hex, iconName: it.icon, key: it.id, langs: it.lang, kinds: it.kind, title: it.title }));
   }));
   return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${f1(width)} ${f1(height)}" role="group" aria-label="Our workshops and guides, one hexagon each, and a request for a workshop of your own in the centre">${out.join("")}</svg>`;
 }
 
 // ---- the page parts ----
 const qmd = html => "```{=html}\n" + html + "\n```\n";
-const chips = `<div class="chips" role="group" aria-label="Show only"><span class="lbl">Show</span>` +
-  [["all", "All"], ...Object.entries(LANG).map(([k, v]) => [k, v.name])].map(([k, l], i) => `<button type="button" data-lang="${k}" aria-pressed="${i ? "false" : "true"}">${esc(l)}</button>`).join("") + `</div>`;
+const chip = (v, l, on = false) => `<button type="button" data-filter="${v}" aria-pressed="${on}">${esc(l)}</button>`;
+const chips = `<div class="chips" role="group" aria-label="Show only"><span class="lbl">Show</span>` + chip("all", "All", true) +
+  Object.entries(LANG).map(([k, v]) => chip("lang:" + k, v.name)).join("") + `<span class="sep" aria-hidden="true"></span>` +
+  Object.entries(cat.kinds).map(([k, v]) => chip("kind:" + k, v + "s")).join("") + `</div>`;
 const data = { languages: Object.fromEntries(Object.entries(LANG).map(([k, v]) => [k, v.name])), kinds: cat.kinds, urls: cat.urls, items, groups, hub: cat.comb.hub };
 const combPart = chips +
-  `<div class="stage"><div class="graphic">${comb()}</div><div class="hexcard" id="card" aria-live="polite"><p class="hint">Click a hexagon to open it.</p></div></div>` +
+  `<div class="stage"><div class="graphic">${comb()}</div><div class="hexcard" id="card" aria-live="polite"><p class="eyebrow">How this works</p><h4><span class="arrow">${icon("arrow-left", 22, "#1e1e1e")}</span>Click a hexagon</h4><p>Each one is a workshop or a guide. Click it and its description and links appear here. The chips above narrow the comb by language or by kind; the centre hexagon is for groups who would like a workshop of their own.</p></div></div>` +
   `<script type="application/json" id="dss-catalogue">${JSON.stringify(data).replace(/</g, "\\u003c")}</script><script src="assets/comb.js" defer></script>`;
 
 const SHORT = { "Open the notes": "Notes", "Download the materials (zip)": "Materials (zip)", "Code on GitHub": "Code", "Data on Dataverse": "Data" };
-const row = (it, showLang) => `<article class="item" data-lang="${it.lang}">
+const row = (it, showLang) => `<article class="item" data-lang="${it.lang}" data-kind="${it.kind}">
   <h4><a href="${it.links[0].url}">${esc(it.title)}</a></h4>
   <p class="meta"><i class="dot" style="background:${LANG[it.lang].colour}"></i>${[showLang && it.lang !== "tools" ? LANG[it.lang].name : null, cat.kinds[it.kind].toLowerCase(), it.year].filter(Boolean).join(" · ")}</p>
   <p>${esc(it.blurb)}</p>
   <p class="rowlinks">${it.links.map(l => `<a href="${l.url}">${esc(SHORT[l.text] || l.text)}</a>`).join("")}</p>
 </article>`;
-const workshopsPart = cat.workshops.map(w => `<h3 class="sub" data-lang="${w.lang}">${esc(w.heading)}</h3><div class="rows2">${w.items.map(id => row(items[id], false)).join("")}</div>`).join("");
+const workshopsPart = cat.workshops.map(w => `<h3 class="sub" data-lang="${w.lang}" data-kind="workshop">${esc(w.heading)}</h3><div class="rows2">${w.items.map(id => row(items[id], false)).join("")}</div>`).join("");
 const guidesPart = `<div class="rows2">${cat.guides.map(id => row(items[id], true)).join("")}</div>`;
 const linkList = list => `<ul class="elsewhere">${list.map(l => `<li><a href="${l.url}">${esc(l.title)}</a><span>${esc(l.text)}</span></li>`).join("")}</ul>`;
 const elsewherePart = linkList(cat.elsewhere.harvard) + `<h3 class="sub">Further afield</h3>` + linkList(cat.elsewhere.afield);

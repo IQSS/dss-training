@@ -73,7 +73,8 @@ p { margin: 0 0 10px; }
 .hex:focus, .hex:focus-visible { outline: none; } // the browser's focus rectangle; keyboard focus shows on the polygon instead
 .hex:hover > polygon, .hex.on > polygon, .hex:focus-visible > polygon { stroke: $body-color; stroke-width: 7; }
 .hexcard { background: $dss-light; border-radius: 4px; padding: 18px 20px 20px; min-height: 260px; }
-.hexcard .hint { color: $dss-muted; font-size: 13.5px; }
+.hexcard .arrow { display: inline-block; vertical-align: -3px; margin-right: 8px; }
+.hexcard .arrow svg { display: block; }
 .hexcard .eyebrow, .eyebrow { font: 600 11.5px Montserrat, sans-serif; letter-spacing: 0.1em; text-transform: uppercase; color: $dss-muted; margin-bottom: 6px; }
 .hexcard h4 { font-family: Questrial, sans-serif; font-weight: 400; font-size: 21px; line-height: 1.25; margin: 0 0 8px; text-wrap: balance; }
 .hexcard p { font-size: 13.5px; }
@@ -115,11 +116,16 @@ details.fold[open] { padding-bottom: 22px; }
 .item .rowlinks { display: flex; gap: 16px; margin: 0; }
 .item .rowlinks a { font-weight: 500; font-size: 13px; color: $dss-orange; text-decoration: none; &:hover { text-decoration: underline; text-underline-offset: 3px; } }
 
-// The language chips fade the comb and hide the rows that do not match.
+// The chips fade the comb and hide the rows that do not match: one filter at a time, a language or a kind.
 @each $l in r, python, stata, tools {
-  body[data-filter="#{$l}"] [data-lang]:not([data-lang~="#{$l}"]) { opacity: 0.22; }
-  body[data-filter="#{$l}"] .item:not([data-lang~="#{$l}"]), body[data-filter="#{$l}"] .sub:not([data-lang~="#{$l}"]) { display: none; }
+  body[data-filter="lang:#{$l}"] [data-lang]:not([data-lang~="#{$l}"]) { opacity: 0.22; }
+  body[data-filter="lang:#{$l}"] .item:not([data-lang~="#{$l}"]), body[data-filter="lang:#{$l}"] .sub:not([data-lang~="#{$l}"]) { display: none; }
 }
+@each $k in workshop, guide {
+  body[data-filter="kind:#{$k}"] [data-kind]:not([data-kind~="#{$k}"]) { opacity: 0.22; }
+  body[data-filter="kind:#{$k}"] .item:not([data-kind~="#{$k}"]), body[data-filter="kind:#{$k}"] .sub:not([data-kind~="#{$k}"]) { display: none; }
+}
+.chips .sep { width: 1px; height: 18px; background: #d3d8df; margin: 0 6px; }
 @media (prefers-reduced-motion: no-preference) { [data-lang] { transition: opacity 0.2s; } }
 
 // Elsewhere at Harvard.
@@ -132,5 +138,5 @@ details.fold[open] { padding-bottom: 22px; }
 .nav-footer { border-top: 1px solid $dss-rule; padding: 22px 0 36px; font-size: 12.5px; }
 .nav-footer a { color: $body-color; font-weight: 500; }
 
-@media (max-width: 900px) { .stage, .stage.page-columns { grid-template-columns: 1fr; } .stage > .hexcard { grid-column: 1 !important; } }
+@media (max-width: 900px) { .stage, .stage.page-columns { grid-template-columns: 1fr; } .stage > .hexcard { grid-column: 1 !important; } .hexcard .arrow { transform: rotate(90deg); } }
 @media (max-width: 760px) { .rows2, .elsewhere { grid-template-columns: 1fr; } h1 { font-size: 32px; } }

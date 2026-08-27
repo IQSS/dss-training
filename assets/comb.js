@@ -31,7 +31,7 @@
     h.addEventListener("keydown", e => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); go(); } });
   });
   document.querySelectorAll(".chips button").forEach(b => b.addEventListener("click", () => {
-    document.body.dataset.filter = b.dataset.lang;
+    document.body.dataset.filter = b.dataset.filter;
     document.querySelectorAll(".chips button").forEach(x => x.setAttribute("aria-pressed", x === b ? "true" : "false"));
   }));
 })();
