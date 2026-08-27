@@ -1,5 +1,5 @@
 ---
-title: "Training materials"
+title: "DSS Training Materials"
 description: "Materials from our workshops and beginner's guides: R, Python, and Stata, and the tools around them. Open to anyone, at your own pace."
 ---
 
