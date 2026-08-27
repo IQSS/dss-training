@@ -36,7 +36,7 @@ description: "Materials from our workshops and beginner's guides: R, Python, and
 ::: {.wrap}
 ```{=html}
 <details class="fold">
-<summary><h2>Beginner's guides</h2><span class="fold-note">The guides as a list</span></summary>
+<summary><h2>Beginner’s guides</h2><span class="fold-note">The guides as a list</span></summary>
 ```
 
 <p class="intro">Short, self-contained guides to the tools around the analysis: version control, editors, LaTeX, building a package, and two methods primers.</p>

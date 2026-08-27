@@ -148,7 +148,7 @@ items:
       - { text: Download the materials (zip), url: https://github.com/IQSS/dss-workshops/raw/master/General/DataScienceTools.zip }
   # ---- guides: each its own repository under github.com/IQSS ----
   - id: git
-    title: "Git and GitHub: A Beginner's Guide"
+    title: "Git and GitHub: A Beginner’s Guide"
     hex: Git and|GitHub
     icon: git-branch
     lang: tools
@@ -158,7 +158,7 @@ items:
     links:
       - { text: Open the guide, url: https://iqss.github.io/git_guide/ }
   - id: gh-pages
-    title: "GitHub Pages: A Beginner's Guide"
+    title: "GitHub Pages: A Beginner’s Guide"
     hex: GitHub|Pages
     icon: layout-template
     lang: tools
@@ -168,7 +168,7 @@ items:
     links:
       - { text: Open the guide, url: https://iqss.github.io/github_pages_guide/ }
   - id: vscode
-    title: "Visual Studio Code: A Beginner's Guide"
+    title: "Visual Studio Code: A Beginner’s Guide"
     hex: VS Code
     icon: file-code
     lang: tools
@@ -178,7 +178,7 @@ items:
     links:
       - { text: Open the guide, url: https://iqss.github.io/vscode-settings/ }
   - id: emacs
-    title: "Emacs: A Beginner's Guide"
+    title: "Emacs: A Beginner’s Guide"
     hex: Emacs
     icon: terminal
     lang: tools
@@ -188,7 +188,7 @@ items:
     links:
       - { text: Open the guide, url: https://iqss.github.io/emacs_guide/ }
   - id: latex
-    title: "LaTeX: A Beginner's Guide"
+    title: "LaTeX: A Beginner’s Guide"
     hex: LaTeX
     icon: sigma
     lang: tools
@@ -198,7 +198,7 @@ items:
     links:
       - { text: Open the guide, url: https://iqss.github.io/latex_guide/ }
   - id: overleaf
-    title: "Overleaf: A Beginner's Guide"
+    title: "Overleaf: A Beginner’s Guide"
     hex: Overleaf
     icon: leaf
     lang: tools
@@ -247,7 +247,7 @@ comb:
     eyebrow: Returning in 2027
     title: Workshops for groups
     text: "Live workshops for departments, labs, and centers across Harvard and MIT return in 2027, on any of these topics or one of your own. Tell us what you would want: the topic, the language, the format."
-    button: Tell us what you'd want
+    button: Tell us what you’d want
   groups: []
   rows:
     - [py-intro, py-scrape, selenium, stata-intro, stata-data, stata-graphics, stata-models]
