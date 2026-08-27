@@ -25,6 +25,8 @@ jobs:
           node-version: 22
           cache: npm
       - run: npm ci
+      # Quarto resolves {{< include >}} files before it runs pre-render, so the generated parts must exist first.
+      - run: npm run build
       - uses: quarto-dev/quarto-actions/setup@v2
       - run: quarto render
       - uses: actions/upload-pages-artifact@v3

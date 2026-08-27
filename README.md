@@ -19,11 +19,12 @@ Requires [Quarto](https://quarto.org/) and Node 20 or later.
 
 ```sh
 npm ci            # once: the icon set and the YAML reader
+npm run build     # once: writes the generated parts to _includes/
 quarto preview    # builds, serves, and rebuilds on save
 quarto render     # builds to _site/
 ```
 
-`quarto render` runs `node build/render.mjs` first, which writes the generated parts to `_includes/`.
+`quarto render` runs `node build/render.mjs` itself before each render, but it looks for the included files before that step runs, so the first build on a fresh checkout needs `npm run build` once.
 
 ## How it is put together
 
