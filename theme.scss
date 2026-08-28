@@ -10,10 +10,7 @@ $dss-btn-ink: #fff !default;     // text on the orange button
 html { overflow-x: hidden; }
 body { font-size: 14.5px; line-height: 1.55; }
 
-// Navbar: the wordmark at a readable size (the Request help button and the colour-scheme menu come from dss-theme).
-.navbar { border-bottom: 1px solid $dss-rule; padding-top: 14px; padding-bottom: 14px; }
-.navbar .navbar-brand img.navbar-logo, .navbar img.navbar-logo { max-height: 72px !important; height: 72px; width: auto; }
-.navbar .navbar-nav .nav-link { font-weight: 500; font-size: 14px; color: $body-color; }
+// Navbar: height, wordmark size, link weight, the Request help button, and the colour-scheme menu all come from dss-theme.
 
 // The content column is the whole width; bands break out to the viewport edge, their content sits in .wrap.
 // Quarto stamps its page-columns grid on the first block after the title; these are plain flow.
