@@ -24,18 +24,18 @@ urls:
   events: https://www.iq.harvard.edu/events
 
 items:
-  # ---- workshops: github.com/IQSS/dss-workshops, notes at iqss.github.io/dss-workshops ----
+  # ---- workshops: github.com/IQSS/dss-workshops (rebuilt 2026; the 2021 repository is dss-workshops-2021), notes at iqss.github.io/dss-workshops ----
   - id: py-intro
     title: Python Introduction
     hex: Python|introduction
     icon: book-open
     lang: python
     kind: workshop
-    year: 2021
+    year: 2026
     blurb: The basics of Python, through an example of analyzing text data. For those with little or no Python.
     links:
-      - { text: Open the notes, url: https://iqss.github.io/dss-workshops/PythonIntro.html }
-      - { text: Download the materials (zip), url: https://github.com/IQSS/dss-workshops/raw/master/Python/PythonIntro.zip }
+      - { text: Open the notes, url: https://iqss.github.io/dss-workshops/python/intro.html }
+      - { text: Download the materials (zip), url: https://github.com/IQSS/dss-workshops/releases/latest/download/materials-python-intro.zip }
   - id: py-scrape
     title: Python Web Scraping
     hex: Python|web scraping
@@ -45,107 +45,107 @@ items:
     year: 2021
     blurb: "Scraping web pages with popular Python libraries. Intermediate: a few months of Python assumed."
     links:
-      - { text: Open the notes, url: https://iqss.github.io/dss-workshops/PythonWebScrape.html }
-      - { text: Download the materials (zip), url: https://github.com/IQSS/dss-workshops/raw/master/Python/PythonWebScrape.zip }
+      - { text: Open the notes, url: https://iqss.github.io/dss-workshops/python/webscrape.html }
+      - { text: Download the materials (zip), url: https://github.com/IQSS/dss-workshops/releases/latest/download/materials-python-webscrape.zip }
   - id: r-intro
     title: R Introduction
     hex: R|introduction
     icon: book-open
     lang: r
     kind: workshop
-    year: 2021
+    year: 2026
     blurb: Importing and manipulating data, packages, basic analyses, and common graphs. For those new to R.
     links:
-      - { text: Open the notes, url: https://iqss.github.io/dss-workshops/Rintro.html }
-      - { text: Download the materials (zip), url: https://github.com/IQSS/dss-workshops/raw/master/R/Rintro.zip }
+      - { text: Open the notes, url: https://iqss.github.io/dss-workshops/r/intro.html }
+      - { text: Download the materials (zip), url: https://github.com/IQSS/dss-workshops/releases/latest/download/materials-r-intro.zip }
   - id: r-wrangle
     title: R Data Wrangling
     hex: R data|wrangling
     icon: filter
     lang: r
     kind: workshop
-    year: 2021
+    year: 2026
     blurb: "Preparing messy data, through a real example. Intermediate: a few weeks of R assumed."
     links:
-      - { text: Open the notes, url: https://iqss.github.io/dss-workshops/RDataWrangling.html }
-      - { text: Download the materials (zip), url: https://github.com/IQSS/dss-workshops/raw/master/R/RDataWrangling.zip }
+      - { text: Open the notes, url: https://iqss.github.io/dss-workshops/r/wrangling.html }
+      - { text: Download the materials (zip), url: https://github.com/IQSS/dss-workshops/releases/latest/download/materials-r-wrangling.zip }
   - id: r-graphics
     title: R Graphics
     hex: R graphics|(ggplot2)
     icon: chart-scatter
     lang: r
     kind: workshop
-    year: 2021
+    year: 2026
     blurb: "ggplot2: layers, aesthetics, scales, facets, and themes. Intermediate."
     links:
-      - { text: Open the notes, url: https://iqss.github.io/dss-workshops/Rgraphics.html }
-      - { text: Download the materials (zip), url: https://github.com/IQSS/dss-workshops/raw/master/R/Rgraphics.zip }
+      - { text: Open the notes, url: https://iqss.github.io/dss-workshops/r/graphics.html }
+      - { text: Download the materials (zip), url: https://github.com/IQSS/dss-workshops/releases/latest/download/materials-r-graphics.zip }
   - id: r-models
     title: R Regression Models
     hex: R regression|models
     icon: trending-up
     lang: r
     kind: workshop
-    year: 2021
+    year: 2026
     blurb: Multiple regression, categorical predictors, diagnostics, and model comparison in R.
     links:
-      - { text: Open the notes, url: https://iqss.github.io/dss-workshops/Rmodels.html }
-      - { text: Download the materials (zip), url: https://github.com/IQSS/dss-workshops/raw/master/R/Rmodels.zip }
+      - { text: Open the notes, url: https://iqss.github.io/dss-workshops/r/models.html }
+      - { text: Download the materials (zip), url: https://github.com/IQSS/dss-workshops/releases/latest/download/materials-r-models.zip }
   - id: stata-intro
     title: Stata Introduction
     hex: Stata|introduction
     icon: book-open
     lang: stata
     kind: workshop
-    year: 2021
+    year: 2026
     blurb: Importing and manipulating data, and descriptive statistics. For those new to Stata.
     links:
-      - { text: Open the notes, url: https://iqss.github.io/dss-workshops/StataIntro.html }
-      - { text: Download the materials (zip), url: https://github.com/IQSS/dss-workshops/raw/master/Stata/StataIntro.zip }
+      - { text: Open the notes, url: https://iqss.github.io/dss-workshops/stata/intro.html }
+      - { text: Download the materials (zip), url: https://github.com/IQSS/dss-workshops/releases/latest/download/materials-stata-intro.zip }
   - id: stata-data
     title: Stata Data Management
     hex: Stata data|management
     icon: filter
     lang: stata
     kind: workshop
-    year: 2021
+    year: 2026
     blurb: Generating and replacing variables, missing values, types, merging and appending, summary data sets.
     links:
-      - { text: Open the notes, url: https://iqss.github.io/dss-workshops/StataDataManage.html }
-      - { text: Download the materials (zip), url: https://github.com/IQSS/dss-workshops/raw/master/Stata/StataDataManage.zip }
+      - { text: Open the notes, url: https://iqss.github.io/dss-workshops/stata/data.html }
+      - { text: Download the materials (zip), url: https://github.com/IQSS/dss-workshops/releases/latest/download/materials-stata-data.zip }
   - id: stata-graphics
     title: Stata Graphics
     hex: Stata|graphics
     icon: chart-column
     lang: stata
     kind: workshop
-    year: 2021
+    year: 2026
     blurb: "Univariate and bivariate graphs in Stata: histograms, scatterplots, and more."
     links:
-      - { text: Open the notes, url: https://iqss.github.io/dss-workshops/StataGraphics.html }
-      - { text: Download the materials (zip), url: https://github.com/IQSS/dss-workshops/raw/master/Stata/StataGraphics.zip }
+      - { text: Open the notes, url: https://iqss.github.io/dss-workshops/stata/graphics.html }
+      - { text: Download the materials (zip), url: https://github.com/IQSS/dss-workshops/releases/latest/download/materials-stata-graphics.zip }
   - id: stata-models
     title: Stata Regression Models
     hex: Stata regression|models
     icon: trending-up
     lang: stata
     kind: workshop
-    year: 2021
+    year: 2026
     blurb: Models for continuous and binary outcomes, saving results, and quantities of interest.
     links:
-      - { text: Open the notes, url: https://iqss.github.io/dss-workshops/StataModels.html }
-      - { text: Download the materials (zip), url: https://github.com/IQSS/dss-workshops/raw/master/Stata/StataModels.zip }
+      - { text: Open the notes, url: https://iqss.github.io/dss-workshops/stata/models.html }
+      - { text: Download the materials (zip), url: https://github.com/IQSS/dss-workshops/releases/latest/download/materials-stata-models.zip }
   - id: ds-tools
     title: Data Science Tools
     hex: Data science|tools
     icon: wrench
     lang: tools
     kind: workshop
-    year: 2021
+    year: 2026
     blurb: "Languages, statistics packages, version control, editors, and IDEs: the options and their trade-offs."
     links:
-      - { text: Open the notes, url: https://iqss.github.io/dss-workshops/DataScienceTools.html }
-      - { text: Download the materials (zip), url: https://github.com/IQSS/dss-workshops/raw/master/General/DataScienceTools.zip }
+      - { text: Open the notes, url: https://iqss.github.io/dss-workshops/general/tools.html }
+      - { text: Download the materials (zip), url: https://github.com/IQSS/dss-workshops/releases/latest/download/materials-general-tools.zip }
   # ---- guides: each its own repository under github.com/IQSS ----
   - id: git
     title: "Git and GitHub: A Beginner’s Guide"
@@ -256,10 +256,10 @@ comb:
 
 # The catalogue beneath the comb, in the order shown.
 workshops:
+  - { heading: Any language, lang: tools, items: [ds-tools] }
   - { heading: R, lang: r, items: [r-intro, r-wrangle, r-graphics, r-models] }
   - { heading: Python, lang: python, items: [py-intro, py-scrape] }
   - { heading: Stata, lang: stata, items: [stata-intro, stata-data, stata-graphics, stata-models] }
-  - { heading: Any language, lang: tools, items: [ds-tools] }
 guides: [git, gh-pages, vscode, emacs, latex, overleaf, rbuild, matching, selenium]
 
 # Elsewhere at Harvard, from the old Resources page (2024 capture; the deep links want checking now and then).
