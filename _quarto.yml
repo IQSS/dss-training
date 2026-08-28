@@ -18,7 +18,9 @@ website:
   navbar:
     title: false
     pinned: true
-    logo: assets/dss-logo.svg
+    logo:
+      light: assets/dss-logo.svg
+      dark: assets/dss-logo-dark.svg
     logo-alt: "Data Science Services"
     logo-href: https://www.iq.harvard.edu/data-science-services
     background: "#ffffff"
@@ -30,7 +32,7 @@ website:
       - text: "Request help"
         href: https://www.iq.harvard.edu/data-science-services/contact-us
   page-footer:
-    left: '<a href="https://www.iq.harvard.edu/" class="footer-logo-link"><img src="assets/iqss-logo.png" alt="IQSS, the Institute for Quantitative Social Science" class="footer-logo"></a><span>Data Science Services · Institute for Quantitative Social Science · Harvard University</span>'
+    left: '<a href="https://www.iq.harvard.edu/" class="footer-logo-link"><img src="assets/iqss-logo.png" alt="IQSS, the Institute for Quantitative Social Science" class="footer-logo light-content"><img src="assets/iqss-logo-dark.png" alt="" class="footer-logo dark-content"></a><span>Data Science Services · Institute for Quantitative Social Science · Harvard University</span>'
     right:
       - text: "Data Science Services"
         href: https://www.iq.harvard.edu/data-science-services
@@ -40,8 +42,10 @@ website:
         href: https://www.iq.harvard.edu/
 
 format:
-  html:
-    theme: theme.scss
+  dss-theme-html:                 # the dss-theme extension: fonts and colours, light and dark, the Light/Dark/System menu
+    theme:
+      light: [cosmo, _extensions/IQSS/dss-theme/dss.scss, theme.scss]
+      dark: [cosmo, _extensions/IQSS/dss-theme/dss.scss, _extensions/IQSS/dss-theme/dss-dark.scss, theme.scss, theme-dark.scss]
     page-layout: full
     toc: false
     anchor-sections: false

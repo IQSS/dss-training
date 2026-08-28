@@ -1,5 +1,5 @@
 node_modules/
-_site/
+_site
 _includes/
 .quarto/
 .DS_Store

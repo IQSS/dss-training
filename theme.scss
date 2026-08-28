@@ -1,40 +1,19 @@
 /*-- scss:defaults --*/
-// The IQSS site's own values, so the page reads as a sibling of the Data Science Services landing page:
-// Questrial for headings, Montserrat for text, band blue #3C72B4, button orange #BF5803, light band #F5F5F5.
-@import url("https://fonts.googleapis.com/css2?family=Questrial&family=Montserrat:wght@400;500;600&display=swap");
-
-$font-family-sans-serif: Montserrat, "Helvetica Neue", Arial, sans-serif;
-$headings-font-family: Questrial, Montserrat, sans-serif;
-$headings-font-weight: 400;
-$font-size-base: 0.95rem;
-$body-color: #1e1e1e;
-$body-bg: #ffffff;
-$primary: #3c72b4;
-$link-color: #3c72b4;
-$navbar-bg: #ffffff;
-$navbar-fg: #1e1e1e;
-$navbar-hl: #3c72b4;
-$footer-bg: #ffffff;
-$footer-fg: #5c677a;
-
-$dss-blue: #3c72b4;
-$dss-orange: #bf5803;
-$dss-light: #f5f5f5;
-$dss-muted: #5c677a;
-$dss-rule: #e3e6ea;
+// The tokens (fonts, the IQSS blue and orange, greys, dark counterparts) come from the dss-theme extension,
+// layered before this file in _quarto.yml (dss.scss, and dss-dark.scss for the dark theme). This file adds
+// only what the index needs beyond them. `!default`, so theme-dark.scss can override.
+$dss-band: #3c72b4 !default;     // the blue band; kept deep in dark mode so its white text holds
+$dss-chip: #eef1f5 !default;     // the filter chips
+$dss-btn-ink: #fff !default;     // text on the orange button
 
 /*-- scss:rules --*/
 html { overflow-x: hidden; }
 body { font-size: 14.5px; line-height: 1.55; }
 
-// Navbar: the wordmark at a readable size, the last link as the orange button.
+// Navbar: the wordmark at a readable size (the Request help button and the colour-scheme menu come from dss-theme).
 .navbar { border-bottom: 1px solid $dss-rule; padding-top: 14px; padding-bottom: 14px; }
 .navbar .navbar-brand img.navbar-logo, .navbar img.navbar-logo { max-height: 72px !important; height: 72px; width: auto; }
 .navbar .navbar-nav .nav-link { font-weight: 500; font-size: 14px; color: $body-color; }
-.navbar .navbar-nav .nav-item:last-child .nav-link {
-  background: $dss-orange; color: #fff; border-radius: 3px; padding: 8px 14px; margin-left: 8px;
-  &:hover { background: darken($dss-orange, 6%); color: #fff; }
-}
 
 // The content column is the whole width; bands break out to the viewport edge, their content sits in .wrap.
 // Quarto stamps its page-columns grid on the first block after the title; these are plain flow.
@@ -49,7 +28,7 @@ main.content { padding: 0; margin: 0; max-width: none; }
 #title-block-header { display: none; }
 .band { padding: 48px 0 52px; margin-left: calc(50% - 50vw); margin-right: calc(50% - 50vw); padding-left: calc(50vw - 50%); padding-right: calc(50vw - 50%); }
 .band.light { background: $dss-light; }
-.band.blue { background: $dss-blue; color: #fff; h2, p { color: #fff; } }
+.band.blue { background: $dss-band; color: #fff; h2, p { color: #fff; } }
 // The content column is the IQSS page's: 1312 px (1368 with this padding). The navbar and footer sit on the same column.
 .wrap { max-width: 1368px; margin: 0 auto; padding: 0 28px; }
 .navbar .navbar-container, .nav-footer { max-width: 1368px; margin-left: auto; margin-right: auto; padding-left: 28px; padding-right: 28px; }
@@ -59,12 +38,12 @@ h2 { font-size: 28px; line-height: 1.25; margin: 0 0 10px; padding-bottom: 0; bo
 p { margin: 0 0 10px; }
 .lede { max-width: 72ch; font-size: 16px; }
 .intro { max-width: 72ch; margin-bottom: 22px; }
-.sub { font: 600 12.5px Montserrat, sans-serif; letter-spacing: 0.1em; text-transform: uppercase; color: $dss-muted; margin: 26px 0 12px; padding-top: 12px; border-top: 1px solid #dfe3e8; }
+.sub { font: 600 12.5px Montserrat, sans-serif; letter-spacing: 0.1em; text-transform: uppercase; color: $dss-muted; margin: 26px 0 12px; padding-top: 12px; border-top: 1px solid $dss-rule; }
 
 // Chips, the comb, the card.
 .chips { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; margin: 14px 0 18px; }
 .chips .lbl { font-weight: 500; font-size: 12.5px; color: $dss-muted; margin-right: 4px; }
-.chips button { font: 500 12.5px Montserrat, sans-serif; padding: 5px 12px; border-radius: 999px; background: #eef1f5; color: $body-color; border: 1px solid transparent; cursor: pointer; }
+.chips button { font: 500 12.5px Montserrat, sans-serif; padding: 5px 12px; border-radius: 999px; background: $dss-chip; color: $body-color; border: 1px solid transparent; cursor: pointer; }
 .chips button:hover { border-color: $dss-blue; }
 .chips button[aria-pressed="true"] { background: $dss-blue; color: #fff; }
 .chips button:focus-visible { outline: 2px solid $dss-orange; outline-offset: 2px; }
@@ -86,8 +65,8 @@ p { margin: 0 0 10px; }
 .hexcard .rows li { font-size: 13.5px; line-height: 1.4; display: flex; flex-direction: column; }
 .hexcard .rows a { color: $body-color; font-weight: 500; text-decoration: underline; text-decoration-color: $dss-blue; text-underline-offset: 2px; }
 .hexcard .rows span { font-size: 12px; color: $dss-muted; }
-.dss-btn { display: inline-block; background: $dss-orange; color: #fff; font: 500 12.5px Montserrat, sans-serif; padding: 8px 14px; border-radius: 3px; text-decoration: none; border: 1px solid $dss-orange; }
-.dss-btn:hover { background: darken($dss-orange, 6%); color: #fff; }
+.dss-btn { display: inline-block; background: $dss-orange; color: $dss-btn-ink; font: 500 12.5px Montserrat, sans-serif; padding: 8px 14px; border-radius: 3px; text-decoration: none; border: 1px solid $dss-orange; }
+.dss-btn:hover { background: darken($dss-orange, 6%); color: $dss-btn-ink; }
 .dss-btn.ghost { background: transparent; color: $dss-orange; }
 .dss-btn.ghost:hover { background: rgba($dss-orange, 0.08); color: $dss-orange; }
 .btns { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 18px; }
@@ -128,7 +107,7 @@ details.fold[open] { padding-bottom: 22px; }
   body[data-filter="kind:#{$k}"] [data-kind]:not([data-kind~="#{$k}"]) { opacity: 0.22; }
   body[data-filter="kind:#{$k}"] .item:not([data-kind~="#{$k}"]), body[data-filter="kind:#{$k}"] .sub:not([data-kind~="#{$k}"]) { display: none; }
 }
-.chips .sep { width: 1px; height: 18px; background: #d3d8df; margin: 0 6px; }
+.chips .sep { width: 1px; height: 18px; background: $dss-rule; margin: 0 6px; }
 @media (prefers-reduced-motion: no-preference) { [data-lang] { transition: opacity 0.2s; } }
 
 // Elsewhere at Harvard.
@@ -149,3 +128,6 @@ footer.footer .nav-footer { padding-left: 28px; padding-right: 28px; } // Quarto
 
 @media (max-width: 900px) { .stage, .stage.page-columns { grid-template-columns: 1fr; } .stage > .hexcard { grid-column: 1 !important; } .hexcard .arrow { transform: rotate(90deg); } }
 @media (max-width: 760px) { .rows2, .elsewhere { grid-template-columns: 1fr; } h1 { font-size: 32px; } }
+
+// Light/dark variants of the footer logo, marked like Quarto marks the navbar logo.
+body.quarto-dark .light-content, body.quarto-light .dark-content { display: none !important; }
