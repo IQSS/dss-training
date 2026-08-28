@@ -35,3 +35,7 @@ quarto render     # builds to _site/
 - `.github/workflows/publish.yml` deploys to GitHub Pages on every push to `main`.
 
 Icons are from [Lucide](https://lucide.dev/) (ISC license).
+
+## Licensing
+
+Code (templates, configuration, scripts): MIT, see `LICENSE`. Catalogue text and page prose: CC BY 4.0, see `LICENSE-content`. Linked workshop materials and guides keep the licences of their own repositories.
