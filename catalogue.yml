@@ -146,7 +146,7 @@ items:
     links:
       - { text: Open the notes, url: https://iqss.github.io/dss-workshops/general/tools.html }
       - { text: Download the materials (zip), url: https://github.com/IQSS/dss-workshops/releases/latest/download/materials-general-tools.zip }
-  # ---- guides: each its own repository under github.com/IQSS ----
+  # ---- guides: the six starter guides are one site, github.com/IQSS/dss-guides (2026); the other three each their own repository under github.com/IQSS ----
   - id: git
     title: "Git and GitHub: A Beginner’s Guide"
     hex: Git and|GitHub
@@ -156,7 +156,7 @@ items:
     year: 2024
     blurb: Creating and cloning repositories, and Git from the command line.
     links:
-      - { text: Open the guide, url: https://iqss.github.io/git_guide/ }
+      - { text: Open the guide, url: https://iqss.github.io/dss-guides/git/ }
   - id: gh-pages
     title: "GitHub Pages: A Beginner’s Guide"
     hex: GitHub|Pages
@@ -166,7 +166,7 @@ items:
     year: 2025
     blurb: A personal website on GitHub Pages, from a template.
     links:
-      - { text: Open the guide, url: https://iqss.github.io/github_pages_guide/ }
+      - { text: Open the guide, url: https://iqss.github.io/dss-guides/pages/ }
   - id: vscode
     title: "Visual Studio Code: A Beginner’s Guide"
     hex: VS Code
@@ -176,7 +176,7 @@ items:
     year: 2024
     blurb: Installing VS Code, with our recommended settings, keybindings, and shortcuts.
     links:
-      - { text: Open the guide, url: https://iqss.github.io/vscode-settings/ }
+      - { text: Open the guide, url: https://iqss.github.io/dss-guides/vscode/ }
   - id: emacs
     title: "Emacs: A Beginner’s Guide"
     hex: Emacs
@@ -186,7 +186,7 @@ items:
     year: 2024
     blurb: Installing Emacs with our configuration, and the functions you will use every day.
     links:
-      - { text: Open the guide, url: https://iqss.github.io/emacs_guide/ }
+      - { text: Open the guide, url: https://iqss.github.io/dss-guides/emacs/ }
   - id: latex
     title: "LaTeX: A Beginner’s Guide"
     hex: LaTeX
@@ -196,7 +196,7 @@ items:
     year: 2024
     blurb: "Ways to write LaTeX: Overleaf, VS Code, and Emacs compared, with GitHub and Copilot."
     links:
-      - { text: Open the guide, url: https://iqss.github.io/latex_guide/ }
+      - { text: Open the guide, url: https://iqss.github.io/dss-guides/latex/ }
   - id: overleaf
     title: "Overleaf: A Beginner’s Guide"
     hex: Overleaf
@@ -206,7 +206,7 @@ items:
     year: 2024
     blurb: Signing up, editing, and collaborating on LaTeX documents online.
     links:
-      - { text: Open the guide, url: https://iqss.github.io/overleaf_guide/ }
+      - { text: Open the guide, url: https://iqss.github.io/dss-guides/overleaf/ }
   - id: rbuild
     title: "Rbuild: Create Your Own Packages in R"
     hex: R packages|(Rbuild)
