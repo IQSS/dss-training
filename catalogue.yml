@@ -227,6 +227,16 @@ items:
     blurb: "Propensity-score methods for confounding in observational studies: a primer and tutorial."
     links:
       - { text: Open the guide, url: https://iqss.github.io/dss-ps }
+  - id: powersim
+    title: Simulation-Based Power Analysis
+    hex: Power|simulation
+    icon: activity
+    lang: r
+    kind: guide
+    year: 2026
+    blurb: Power analysis by simulation for mixed effects models, worked through in R, Python, and Stata.
+    links:
+      - { text: Open the guide, url: https://iqss.github.io/dss-powersim/ }
   - id: selenium
     title: Web Scraping with Selenium Python
     hex: Web scraping|with Selenium
@@ -251,8 +261,9 @@ comb:
   groups: []
   rows:
     - [py-intro, py-scrape, selenium, stata-intro, stata-data, stata-graphics, stata-models]
-    - [r-intro, r-wrangle, r-graphics, hub, r-models, matching, rbuild]
-    - [ds-tools, vscode, emacs, git, gh-pages, latex, overleaf]
+    - [r-intro, r-wrangle, r-graphics, hub, r-models, matching]
+    - [rbuild, powersim, ds-tools, vscode, emacs, git]
+    - [gh-pages, latex, overleaf]
 
 # The catalogue beneath the comb, in the order shown.
 workshops:
@@ -260,7 +271,7 @@ workshops:
   - { heading: R, lang: r, items: [r-intro, r-wrangle, r-graphics, r-models] }
   - { heading: Python, lang: python, items: [py-intro, py-scrape] }
   - { heading: Stata, lang: stata, items: [stata-intro, stata-data, stata-graphics, stata-models] }
-guides: [git, gh-pages, vscode, emacs, latex, overleaf, rbuild, matching, selenium]
+guides: [git, gh-pages, vscode, emacs, latex, overleaf, rbuild, matching, powersim, selenium]
 
 # Elsewhere at Harvard, from the old Resources page (2024 capture; the deep links want checking now and then).
 # Quote any value that contains a comma: these are flow mappings, and a bare comma starts a new key.
