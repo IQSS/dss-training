@@ -33,13 +33,13 @@ website:
         href: https://www.iq.harvard.edu/data-science-services/contact-us
   page-footer:
     left: '<a href="https://www.iq.harvard.edu/" class="footer-logo-link"><img src="assets/iqss-logo.png" alt="IQSS, the Institute for Quantitative Social Science" class="footer-logo light-content"><img src="assets/iqss-logo-dark.png" alt="" class="footer-logo dark-content"></a><span>Data Science Services · Institute for Quantitative Social Science · Harvard University</span>'
+    # The footer is provenance, not navigation: the navbar carries Data Science Services and Request help,
+    # and the logo beside this text already links to IQSS. The licences are what nothing else here states.
     right:
-      - text: "Data Science Services"
-        href: https://www.iq.harvard.edu/data-science-services
-      - text: "Request help"
-        href: https://www.iq.harvard.edu/data-science-services/contact-us
-      - text: "IQSS"
-        href: https://www.iq.harvard.edu/
+      - text: "MIT"
+        href: https://github.com/IQSS/dss-training/blob/main/LICENSE
+      - text: "CC BY 4.0"
+        href: https://github.com/IQSS/dss-training/blob/main/LICENSE-content
 
 format:
   dss-theme-html:                 # the dss-theme extension: fonts and colours, light and dark, the Light/Dark/System menu
