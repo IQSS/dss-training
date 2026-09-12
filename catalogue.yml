@@ -1,6 +1,6 @@
 # catalogue.yml — everything the training index shows, and how it is arranged. src/render.mjs turns this into
 # the page's generated parts before every Quarto render. To add a material: add an item under `items`, then put
-# its id in a `comb.rows` slot (or in a group's `items`) and in `workshops` or `guides`; the build fails loudly
+# its id in a `comb.rows` slot and in `workshops` or `guides`; the build fails loudly
 # if an item is missing from either place.
 #
 # Item fields: id (short, stable); title; hex (the label on its hexagon, `|` breaks the line; two lines at most,
@@ -145,7 +145,6 @@ items:
     blurb: "Languages, statistics packages, version control, editors, and IDEs: the options and their trade-offs."
     links:
       - { text: Open the notes, url: https://iqss.github.io/dss-workshops/general/tools.html }
-      - { text: Download the materials (zip), url: https://github.com/IQSS/dss-workshops/releases/latest/download/materials-general-tools.zip }
   # ---- guides: the six starter guides are one site, github.com/IQSS/dss-guides (2026); the other three each their own repository under github.com/IQSS ----
   - id: git
     title: "Git and GitHub: A Beginner’s Guide"
@@ -248,7 +247,7 @@ items:
     links:
       - { text: Open the guide, url: https://iqss.github.io/dss-webscrape/ }
 
-# The honeycomb: rows of seven, staggered. A slot is an item id, a group id, or `hub`. Color follows the
+# The honeycomb: rows of seven, staggered. A slot is an item id or `hub`. Color follows the
 # item's language; the hub is white.
 comb:
   hub:
@@ -258,7 +257,6 @@ comb:
     title: Workshops for groups
     text: "Live workshops for departments, labs, and centers across Harvard and MIT return in 2027, on any of these topics or one of your own. Tell us what you would want: the topic, the language, the format."
     button: Tell us what you’d want
-  groups: []
   rows:
     - [py-intro, py-scrape, selenium, stata-intro, stata-data, stata-graphics, stata-models]
     - [r-intro, r-wrangle, r-graphics, hub, r-models, matching]

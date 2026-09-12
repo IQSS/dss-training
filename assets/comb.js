@@ -1,36 +1,47 @@
 // comb.js — the card beside the honeycomb, and the language chips. Reads the JSON that src/render.mjs wrote
-// into the page (#dss-catalogue). Without JavaScript the page still works: every item is listed beneath the comb.
+// into the page (#dss-catalogue). Without JavaScript the page still works, and better than it used to: every
+// hexagon is a real link to its material, and every item is listed with its links beneath the comb.
 (() => {
   const el = document.getElementById("dss-catalogue");
   if (!el) return;
   const D = JSON.parse(el.textContent);
   const card = document.getElementById("card");
   const esc = s => String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;");
-  const meta = it => [D.kinds[it.kind], it.lang !== "tools" ? D.languages[it.lang] : null, it.year].filter(Boolean).join(" · ");
   const kindLang = it => [D.kinds[it.kind], it.lang !== "tools" ? D.languages[it.lang] : null].filter(Boolean).join(" · ");
-  const link = (l, i) => `<a class="dss-btn${i ? " ghost" : ""}" href="${l.url}" target="_blank" rel="noopener">${esc(l.text)}</a>`; // materials open in a new tab; the index stays put
-  const itemCard = it => `<p class="eyebrow">${esc(kindLang(it))}</p><h4>${esc(it.title)}</h4><p>${esc(it.blurb)}</p><p class="when">Last updated ${it.year}</p><div class="links">${it.links.map(link).join("")}</div>`;
-  const rows = ids => `<ul class="rows">${ids.map(id => { const it = D.items[id]; return `<li><a href="${it.links[0].url}" target="_blank" rel="noopener">${esc(it.title)}</a><span>${esc(meta(it))}</span></li>`; }).join("")}</ul>`;
+  // The card describes; it carries no links of its own. The hexagon is the link, and every material is listed
+  // again with all of its links in the catalogue below the comb.
+  const itemCard = it => `<p class="eyebrow">${esc(kindLang(it))}</p><h4>${esc(it.title)}</h4><p>${esc(it.blurb)}</p><p class="when">Last updated ${it.year}</p>`;
 
   function show(key) {
     document.querySelectorAll(".hex.on").forEach(e => e.classList.remove("on"));
-    const el = document.querySelector(`.hex[data-key="${key}"]`);
-    if (el) el.classList.add("on");
+    const h = document.querySelector(`.hex[data-key="${key}"]`);
+    if (h) h.classList.add("on");
     if (key === "hub") {
-      const h = D.hub;
-      card.innerHTML = `<p class="eyebrow">${esc(h.eyebrow)}</p><h4>${esc(h.title)}</h4><p>${esc(h.text)}</p><div class="links"><a class="dss-btn" href="${D.urls.request}">${esc(h.button)}</a></div>`;
-    } else if (D.groups[key]) {
-      const g = D.groups[key];
-      card.innerHTML = `<p class="eyebrow">${g.items.length} items</p><h4>${esc(g.hex.replace(/\|/g, " "))}</h4><p>${esc(g.blurb)}</p>${rows(g.items)}`;
+      const b = D.hub;
+      card.innerHTML = `<p class="eyebrow">${esc(b.eyebrow)}</p><h4>${esc(b.title)}</h4><p>${esc(b.text)}</p>`;
     } else if (D.items[key]) {
       card.innerHTML = itemCard(D.items[key]);
     }
   }
+
+  // Pointing at a hexagon previews it; clicking opens it, which the browser does by itself because the hexagon
+  // is an <a>. The preview is sticky: the last hexagon you passed stays in the card, so you can read it after
+  // the cursor has moved away -- the card sits off to the side, so reverting on mouse-out would empty it just
+  // as you moved over to read.
+  // Keyboard focus previews too, so tabbing the comb reads the same way as pointing at it.
+  // Touch has no hover: a first tap previews and a second tap on the same hexagon opens. Without this a phone
+  // would jump straight to the material having never shown the description.
+  const coarse = window.matchMedia("(hover: none)").matches;
+  let pinned = null;
   document.querySelectorAll(".hex[data-key]").forEach(h => {
-    const go = () => show(h.dataset.key);
-    h.addEventListener("click", go);
-    h.addEventListener("keydown", e => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); go(); } });
+    const key = h.dataset.key;
+    if (!coarse) h.addEventListener("mouseenter", () => show(key));
+    h.addEventListener("focus", () => show(key));
+    h.addEventListener("click", e => {
+      if (coarse && pinned !== key) { e.preventDefault(); show(key); pinned = key; }
+    });
   });
+
   document.querySelectorAll(".chips button").forEach(b => b.addEventListener("click", () => {
     document.body.dataset.filter = b.dataset.filter;
     document.querySelectorAll(".chips button").forEach(x => x.setAttribute("aria-pressed", x === b ? "true" : "false"));

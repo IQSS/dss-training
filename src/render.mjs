@@ -13,7 +13,6 @@ const ROOT = join(dirname(fileURLToPath(import.meta.url)), "..");
 const OUT = join(ROOT, "_includes");
 const cat = parse(readFileSync(join(ROOT, "catalogue.yml"), "utf8"));
 const items = Object.fromEntries(cat.items.map(i => [i.id, i]));
-const groups = Object.fromEntries((cat.comb.groups || []).map(g => [g.id, g]));
 const LANG = cat.languages;
 const CHARCOAL = "#4A4A4A";
 
@@ -22,13 +21,13 @@ const fail = msg => { throw new Error("catalogue.yml: " + msg); };
 const seenInComb = new Map();
 for (const row of cat.comb.rows) for (const slot of row) {
   if (slot === "hub") continue;
-  const ids = groups[slot] ? groups[slot].items : items[slot] ? [slot] : fail(`unknown id in comb.rows: ${slot}`);
-  for (const id of ids) { if (!items[id]) fail(`unknown id in group ${slot}: ${id}`); seenInComb.set(id, (seenInComb.get(id) || 0) + 1); }
+  if (!items[slot]) fail(`unknown id in comb.rows: ${slot}`);
+  seenInComb.set(slot, (seenInComb.get(slot) || 0) + 1);
 }
 const seenInList = new Map();
 for (const id of [...cat.workshops.flatMap(w => w.items), ...cat.guides]) { if (!items[id]) fail(`unknown id in workshops/guides: ${id}`); seenInList.set(id, (seenInList.get(id) || 0) + 1); }
 for (const it of cat.items) {
-  if (!seenInComb.has(it.id)) fail(`${it.id} has no hex: add it to a comb row or a group`);
+  if (!seenInComb.has(it.id)) fail(`${it.id} has no hex: add it to a comb row`);
   if (seenInComb.get(it.id) > 1) fail(`${it.id} appears in the comb more than once`);
   if (!seenInList.has(it.id)) fail(`${it.id} is not in workshops or guides`);
   if (!LANG[it.lang]) fail(`${it.id}: unknown lang ${it.lang}`);
@@ -57,17 +56,17 @@ function icon(name, size, stroke) {
   return `<svg xmlns="http://www.w3.org/2000/svg" width="${f1(size)}" height="${f1(size)}" viewBox="0 0 24 24" fill="none" stroke="${stroke}" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${src.slice(open + 1, close).trim()}</svg>`;
 }
 const pts = (cx, cy, r) => Array.from({ length: 6 }, (_, k) => { const a = Math.PI / 180 * (60 * k - 30); return f1(cx + r * Math.cos(a)) + "," + f1(cy + r * Math.sin(a)); }).join(" ");
-function hex({ cx, cy, fill, stroke, ink, label, iconName, big = false, badge = null, key, langs, kinds, title }) {
+function hex({ cx, cy, fill, stroke, ink, label, iconName, big = false, key, langs, kinds, title, href }) {
   const r = R * 0.95, lines = label.split("|"), fs = R * (big ? 0.19 : lines.length > 2 ? 0.15 : 0.165), isz = R * (big ? 0.66 : 0.6);
   const y0 = cy + R * (lines.length === 1 ? 0.3 : lines.length === 2 ? 0.2 : 0.14) + fs;
-  return `<g class="hex" data-key="${key}" data-lang="${langs}" data-kind="${kinds}" tabindex="0" role="button" aria-label="${esc(title)}">` +
+  // A real <a>, so the browser gives it cmd-click, middle-click, open-in-new-tab and the URL on hover.
+  // target=_blank because this page is an index and stays put, like every other link to materials here.
+  return `<a class="hex" href="${esc(href)}" target="_blank" rel="noopener" data-key="${key}" data-lang="${langs}" data-kind="${kinds}" tabindex="0" aria-label="${esc(title)}">` +
     `<polygon points="${pts(cx, cy, r)}" fill="${fill}" stroke="${stroke}" stroke-width="${f1(R * 0.04)}" stroke-linejoin="round"/>` +
     `<g transform="translate(${f1(cx - isz / 2)} ${f1(cy - R * 0.64)})">${icon(iconName, isz, ink)}</g>` +
     `<text x="${f1(cx)}" y="${f1(y0)}" text-anchor="middle" font-family="Montserrat, sans-serif" font-weight="${big ? 600 : 500}" font-size="${f1(fs)}" fill="${ink}">` +
     lines.map((l, i) => `<tspan x="${f1(cx)}" dy="${i ? f1(fs * 1.18) : 0}">${esc(l)}</tspan>`).join("") + `</text>` +
-    (badge ? `<circle cx="${f1(cx + 0.5 * R)}" cy="${f1(cy - 0.42 * R)}" r="15" fill="#fff" stroke="${stroke}" stroke-width="2"/>` +
-      `<text x="${f1(cx + 0.5 * R)}" y="${f1(cy - 0.42 * R + 5.5)}" text-anchor="middle" font-family="Montserrat, sans-serif" font-weight="600" font-size="15" fill="${fill}">${badge}</text>` : "") +
-    `</g>`;
+    `</a>`;
 }
 function comb() {
   const rows = cat.comb.rows, width = (Math.max(...rows.map(r => r.length)) + 0.5) * W, height = (1.5 * rows.length + 0.5) * R;
@@ -76,12 +75,10 @@ function comb() {
     const cx = W / 2 + ci * W + (ri % 2 ? W / 2 : 0), cy = R + ri * 1.5 * R;
     if (slot === "hub") {
       const h = cat.comb.hub;
-      return out.push(hex({ cx, cy, fill: "#fff", stroke: CHARCOAL, ink: CHARCOAL, label: h.hex, iconName: h.icon, big: true, key: "hub", langs: Object.keys(LANG).join(" "), kinds: Object.keys(cat.kinds).join(" "), title: h.title }));
+      return out.push(hex({ cx, cy, fill: "#fff", stroke: CHARCOAL, ink: CHARCOAL, label: h.hex, iconName: h.icon, big: true, key: "hub", langs: Object.keys(LANG).join(" "), kinds: Object.keys(cat.kinds).join(" "), title: h.title, href: cat.urls.request }));
     }
-    const g = groups[slot];
-    if (g) { const col = LANG[g.lang].color; return out.push(hex({ cx, cy, fill: col, stroke: darken(col), ink: "#fff", label: g.hex, iconName: g.icon, badge: g.items.length, key: g.id, langs: g.lang, kinds: [...new Set(g.items.map(id => items[id].kind))].join(" "), title: `${g.hex.replace(/\|/g, " ")}: ${g.items.length} items` })); }
     const it = items[slot], col = LANG[it.lang].color;
-    out.push(hex({ cx, cy, fill: col, stroke: darken(col), ink: "#fff", label: it.hex, iconName: it.icon, key: it.id, langs: it.lang, kinds: it.kind, title: it.title }));
+    out.push(hex({ cx, cy, fill: col, stroke: darken(col), ink: "#fff", label: it.hex, iconName: it.icon, key: it.id, langs: it.lang, kinds: it.kind, title: it.title, href: it.links[0].url }));
   }));
   return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${f1(width)} ${f1(height)}" role="group" aria-label="Our workshops and guides, one hexagon each, and a request for a workshop of your own in the center">${out.join("")}</svg>`;
 }
@@ -94,9 +91,9 @@ const chip = (v, l, on = false) => `<button type="button" data-filter="${v}" ari
 const chips = `<div class="chips" role="group" aria-label="Show only"><span class="lbl">Show</span>` + chip("all", "All", true) +
   Object.entries(LANG).map(([k, v]) => chip("lang:" + k, v.name)).join("") + `<span class="sep" aria-hidden="true"></span>` +
   Object.entries(cat.kinds).map(([k, v]) => chip("kind:" + k, v + "s")).join("") + `</div>`;
-const data = { languages: Object.fromEntries(Object.entries(LANG).map(([k, v]) => [k, v.name])), kinds: cat.kinds, urls: cat.urls, items, groups, hub: cat.comb.hub };
+const data = { languages: Object.fromEntries(Object.entries(LANG).map(([k, v]) => [k, v.name])), kinds: cat.kinds, items, hub: cat.comb.hub };
 const combPart = chips +
-  `<div class="stage"><div class="graphic">${comb()}</div><div class="hexcard" id="card" aria-live="polite"><p class="eyebrow">How this works</p><h4><span class="arrow">${icon("arrow-left", 22, "#1e1e1e")}</span>Click a hexagon</h4><p>Each one is a workshop or a guide. Click it and its description and links appear here. The buttons above the grid filter by language or by kind; the center hexagon is for groups who would like a workshop of their own, when live workshops return in 2027.</p></div></div>` +
+  `<div class="stage"><div class="graphic">${comb()}</div><div class="hexcard" id="card" aria-live="polite"><p class="eyebrow">How this works</p><h4><span class="arrow">${icon("arrow-left", 22, "#1e1e1e")}</span><span class="p-fine">Point at a hexagon</span><span class="p-coarse">Tap a hexagon</span></h4><p>Each one is a workshop or a guide. <span class="p-fine">Point at one to see what it is, and click to open it in a new tab.</span><span class="p-coarse">Tap one to see what it is, then tap again to open it in a new tab.</span> The buttons above the grid filter by language or by kind; the center hexagon is for groups who would like a workshop of their own, when live workshops return in 2027.</p></div></div>` +
   `<script type="application/json" id="dss-catalogue">${JSON.stringify(data).replace(/</g, "\\u003c")}</script><script src="assets/comb.js" defer></script>`;
 
 const SHORT = { "Open the notes": "Notes", "Download the materials (zip)": "Materials (zip)", "Code on GitHub": "Code", "Data on Dataverse": "Data" };

@@ -47,7 +47,7 @@ p { margin: 0 0 10px; }
 .stage { display: grid; grid-template-columns: minmax(0, 1fr) 300px; gap: 26px; align-items: start; }
 .graphic { min-width: 0; }
 .graphic svg { display: block; width: 100%; height: auto; }
-.hex { cursor: pointer; outline: none; }
+.hex { cursor: pointer; outline: none; text-decoration: none; }
 .hex:focus, .hex:focus-visible { outline: none; } // the browser's focus rectangle; keyboard focus shows on the polygon instead
 .hex:hover > polygon, .hex.on > polygon, .hex:focus-visible > polygon { stroke: $body-color; stroke-width: 7; }
 .hexcard { background: $dss-light; border-radius: 4px; padding: 18px 20px 20px; min-height: 260px; }
@@ -57,11 +57,10 @@ p { margin: 0 0 10px; }
 .hexcard h4 { font-family: Questrial, sans-serif; font-weight: 400; font-size: 21px; line-height: 1.25; margin: 0 0 8px; text-wrap: balance; }
 .hexcard p { font-size: 13.5px; }
 .hexcard .when { color: $dss-muted; margin-top: -2px; }
-.hexcard .links { display: flex; flex-direction: column; gap: 8px; align-items: flex-start; margin-top: 12px; }
-.hexcard .rows { list-style: none; margin: 4px 0 0; padding: 0; display: flex; flex-direction: column; gap: 9px; }
-.hexcard .rows li { font-size: 13.5px; line-height: 1.4; display: flex; flex-direction: column; }
-.hexcard .rows a { color: $body-color; font-weight: 500; text-decoration: underline; text-decoration-color: $dss-blue; text-underline-offset: 2px; }
-.hexcard .rows span { font-size: 12px; color: $dss-muted; }
+// The card names the gesture, and the gesture differs by device: a pointer hovers, a touch screen taps twice.
+// Done in CSS rather than JS so the right wording is there in the first paint.
+.p-coarse { display: none; }
+@media (hover: none) { .p-fine { display: none; } .p-coarse { display: inline; } }
 .dss-btn { display: inline-block; background: $dss-orange; color: $dss-btn-ink; font: 500 12.5px Montserrat, sans-serif; padding: 8px 14px; border-radius: 3px; text-decoration: none; border: 1px solid $dss-orange; }
 .dss-btn:hover { background: darken($dss-orange, 6%); color: $dss-btn-ink; }
 .dss-btn.ghost { background: transparent; color: $dss-orange; }
