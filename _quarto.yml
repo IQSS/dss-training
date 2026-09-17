@@ -54,5 +54,8 @@ format:
       sidebar-width: 0px
       margin-width: 0px
     include-in-header:
+      # Visitor counts: GoatCounter at dss-training.goatcounter.com. Each page view is recorded with its path,
+      # title and referrer; no cookie, nothing that identifies the reader. Adding #toggle-goatcounter to any
+      # iqss.github.io address switches counting off in that browser, for the people who maintain the sites.
       - text: |
-          <meta name="theme-color" content="#3C72B4">
+          <script data-goatcounter="https://dss-training.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
