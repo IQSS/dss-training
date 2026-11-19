@@ -51,7 +51,7 @@ description: "Materials from our workshops and guides: R, Python, Stata, AI agen
 
 ::: {.band .blue}
 ::: {.wrap}
-<h2>Live workshops return in 2027</h2>
+<h2>Online trainings return in 2027</h2>
 
 <p class="lede">We taught workshops from 2011 to 2021 and are bringing them back. When sessions are scheduled, the IQSS events page will list them. Departments, labs, and centers across Harvard and MIT: tell us what you would want, on any of these topics or one of your own.</p>
 

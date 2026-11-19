@@ -4,7 +4,7 @@
 # if an item is missing from either place.
 #
 # Item fields: id (short, stable); title; hex (the label on its hexagon, `|` breaks the line; two lines at most,
-# three if short); icon (a Lucide icon name, lucide.dev/icons); lang (r · python · stata · tools); kind
+# three if short); icon (a Lucide icon name, lucide.dev/icons); lang (r · python · stata · ai · tools); kind
 # (workshop · guide); year (when the materials were last touched); blurb (one sentence); links (the first is the
 # one the title links to). Optional color overrides the language color without changing filters.
 
@@ -12,6 +12,7 @@ languages:
   r:      { name: R,                 color: "#3C72B4" }
   python: { name: Python,            color: "#C4963C" }
   stata:  { name: Stata,             color: "#7A5C93" }
+  ai:     { name: AI,                color: "#3C72B4" }
   tools:  { name: Tools and writing, color: "#2F8A8A" }
 
 kinds:
@@ -150,8 +151,7 @@ items:
     title: Doing Research with AI Agents
     hex: Research with|AI agents
     icon: bot
-    lang: tools
-    color: "#3C72B4"
+    lang: ai
     kind: guide
     year: 2026
     blurb: Use agents throughout a research project, from organizing files and finding literature to checking analyses, writing, and reproducibility.
@@ -161,13 +161,22 @@ items:
     title: Extending Your Agent's Toolkit
     hex: AI agent|toolkit
     icon: wrench
-    lang: tools
-    color: "#3C72B4"
+    lang: ai
     kind: guide
     year: 2026
     blurb: Ask an agent to install, configure, and use additional tools when your research needs them.
     links:
       - { text: Open the guide, url: https://iqss.github.io/dss-agentic-toolkit/ }
+  - id: agent-skills
+    title: DSS Agent Skills
+    hex: AI agent|skills
+    icon: puzzle
+    lang: ai
+    kind: guide
+    year: 2026
+    blurb: Reusable instructions for recurring research tasks, with skills to install and adapt for project setup, literature searches, and analysis review.
+    links:
+      - { text: Browse the skills, url: https://iqss.github.io/dss-agent-skills/ }
   - id: git
     title: "Git and GitHub: A Beginner’s Guide"
     hex: Git and|GitHub
@@ -282,8 +291,8 @@ comb:
   rows:
     - [py-intro, py-scrape, selenium, stata-intro, stata-data, stata-graphics, stata-models]
     - [r-intro, r-wrangle, r-graphics, hub, r-models, matching]
-    - [rbuild, powersim, agentic-research, agentic-toolkit, ds-tools, vscode]
-    - [emacs, git, gh-pages, latex, overleaf]
+    - [rbuild, powersim, agentic-research, agentic-toolkit, agent-skills, ds-tools]
+    - [vscode, emacs, git, gh-pages, latex, overleaf]
 
 # The catalogue beneath the comb, in the order shown.
 workshops:
@@ -291,7 +300,7 @@ workshops:
   - { heading: R, lang: r, items: [r-intro, r-wrangle, r-graphics, r-models] }
   - { heading: Python, lang: python, items: [py-intro, py-scrape] }
   - { heading: Stata, lang: stata, items: [stata-intro, stata-data, stata-graphics, stata-models] }
-guides: [agentic-research, agentic-toolkit, git, gh-pages, vscode, emacs, latex, overleaf, rbuild, matching, powersim, selenium]
+guides: [agentic-research, agentic-toolkit, agent-skills, git, gh-pages, vscode, emacs, latex, overleaf, rbuild, matching, powersim, selenium]
 
 # Elsewhere at Harvard, from the old Resources page (2024 capture; the deep links want checking now and then).
 # Quote any value that contains a comma: these are flow mappings, and a bare comma starts a new key.

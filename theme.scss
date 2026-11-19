@@ -94,8 +94,8 @@ details.fold[open] { padding-bottom: 22px; }
 .item .rowlinks { display: flex; gap: 16px; margin: 0; }
 .item .rowlinks a { font-weight: 500; font-size: 13px; color: $dss-orange; text-decoration: none; &:hover { text-decoration: underline; text-underline-offset: 3px; } }
 
-// The chips fade the comb and hide the rows that do not match: one filter at a time, a language or a kind.
-@each $l in r, python, stata, tools {
+// The chips fade the comb and hide the rows that do not match: one topic or kind at a time.
+@each $l in r, python, stata, ai, tools {
   body[data-filter="lang:#{$l}"] [data-lang]:not([data-lang~="#{$l}"]) { opacity: 0.22; }
   body[data-filter="lang:#{$l}"] .item:not([data-lang~="#{$l}"]), body[data-filter="lang:#{$l}"] .sub:not([data-lang~="#{$l}"]) { display: none; }
 }
@@ -123,7 +123,11 @@ footer.footer .nav-footer { align-items: center; }
 footer.footer .nav-footer { padding-left: 28px; padding-right: 28px; } // Quarto's own 12.5 px would win at lower specificity
 
 @media (max-width: 900px) { .stage, .stage.page-columns { grid-template-columns: 1fr; } .stage > .hexcard { grid-column: 1 !important; } .hexcard .arrow { transform: rotate(90deg); } }
-@media (max-width: 760px) { .rows2, .elsewhere { grid-template-columns: 1fr; } h1 { font-size: 32px; } }
+@media (max-width: 760px) {
+  .rows2, .elsewhere { grid-template-columns: 1fr; }
+  h1 { font-size: 32px; }
+  .nav-footer .nav-footer-left > p { flex-wrap: wrap; white-space: normal; }
+}
 
 // Light/dark variants of the footer logo, marked like Quarto marks the navbar logo.
 body.quarto-dark .light-content, body.quarto-light .dark-content { display: none !important; }
