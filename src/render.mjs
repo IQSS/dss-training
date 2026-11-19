@@ -31,6 +31,7 @@ for (const it of cat.items) {
   if (seenInComb.get(it.id) > 1) fail(`${it.id} appears in the comb more than once`);
   if (!seenInList.has(it.id)) fail(`${it.id} is not in workshops or guides`);
   if (!LANG[it.lang]) fail(`${it.id}: unknown lang ${it.lang}`);
+  if (it.color && !/^#[0-9a-f]{6}$/i.test(it.color)) fail(`${it.id}: color must be a six-digit hex color`);
   if (!cat.kinds[it.kind]) fail(`${it.id}: unknown kind ${it.kind}`);
   if (!it.links?.length) fail(`${it.id}: needs at least one link`);
 }
@@ -77,7 +78,7 @@ function comb() {
       const h = cat.comb.hub;
       return out.push(hex({ cx, cy, fill: "#fff", stroke: CHARCOAL, ink: CHARCOAL, label: h.hex, iconName: h.icon, big: true, key: "hub", langs: Object.keys(LANG).join(" "), kinds: Object.keys(cat.kinds).join(" "), title: h.title, href: cat.urls.request }));
     }
-    const it = items[slot], col = LANG[it.lang].color;
+    const it = items[slot], col = it.color || LANG[it.lang].color;
     out.push(hex({ cx, cy, fill: col, stroke: darken(col), ink: "#fff", label: it.hex, iconName: it.icon, key: it.id, langs: it.lang, kinds: it.kind, title: it.title, href: it.links[0].url }));
   }));
   return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${f1(width)} ${f1(height)}" role="group" aria-label="Our workshops and guides, one hexagon each, and a request for a workshop of your own in the center">${out.join("")}</svg>`;
@@ -99,7 +100,7 @@ const combPart = chips +
 const SHORT = { "Open the notes": "Notes", "Download the materials (zip)": "Materials (zip)", "Code on GitHub": "Code", "Data on Dataverse": "Data" };
 const row = (it, showLang) => `<article class="item" data-lang="${it.lang}" data-kind="${it.kind}">
   <h4><a href="${it.links[0].url}" target="_blank" rel="noopener">${esc(it.title)}</a></h4>
-  <p class="meta"><i class="dot" style="background:${LANG[it.lang].color}"></i>${[showLang && it.lang !== "tools" ? LANG[it.lang].name : null, cat.kinds[it.kind].toLowerCase(), it.year].filter(Boolean).join(" · ")}</p>
+  <p class="meta"><i class="dot" style="background:${it.color || LANG[it.lang].color}"></i>${[showLang && it.lang !== "tools" ? LANG[it.lang].name : null, cat.kinds[it.kind].toLowerCase(), it.year].filter(Boolean).join(" · ")}</p>
   <p>${esc(it.blurb)}</p>
   <p class="rowlinks">${it.links.map(l => `<a href="${l.url}" target="_blank" rel="noopener">${esc(SHORT[l.text] || l.text)}</a>`).join("")}</p>
 </article>`;
