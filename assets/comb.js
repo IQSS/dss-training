@@ -2,6 +2,18 @@
 // into the page (#dss-catalogue). Without JavaScript the page still works, and better than it used to: every
 // hexagon is a real link to its material, and every item is listed with its links beneath the comb.
 (() => {
+  // Quarto's navigation treats every link.href as a string. SVG links expose
+  // SVGAnimatedString instead; bridge only our links while retaining native
+  // SVG navigation through the underlying href attribute.
+  document.querySelectorAll("a.hex").forEach(link => {
+    if (typeof link.href !== "string") {
+      Object.defineProperty(link, "href", {
+        configurable: true,
+        get() { return this.getAttribute("href") || ""; },
+        set(value) { this.setAttribute("href", value); }
+      });
+    }
+  });
   const el = document.getElementById("dss-catalogue");
   if (!el) return;
   const D = JSON.parse(el.textContent);

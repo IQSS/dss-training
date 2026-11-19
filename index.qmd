@@ -1,6 +1,6 @@
 ---
 title: "DSS Training Materials"
-description: "Materials from our workshops and beginner's guides: R, Python, and Stata, and the tools around them. Open to anyone, at your own pace."
+description: "Materials from our workshops and guides: R, Python, Stata, AI agents, and research tools. Open to anyone, at your own pace."
 ---
 
 ::: {.band}
@@ -9,7 +9,7 @@ description: "Materials from our workshops and beginner's guides: R, Python, and
 <h1>Training materials</h1>
 ```
 
-<p class="lede">Materials from our workshops and beginner's guides: R, Python, and Stata, and the tools around them. Open to anyone, at your own pace.</p>
+<p class="lede">Materials from our workshops and guides: R, Python, Stata, AI agents, and research tools. Open to anyone, at your own pace.</p>
 
 {{< include _includes/comb.qmd >}}
 :::
@@ -36,10 +36,10 @@ description: "Materials from our workshops and beginner's guides: R, Python, and
 ::: {.wrap}
 ```{=html}
 <details class="fold">
-<summary><h2>Beginner’s guides</h2><span class="fold-note">The guides as a list</span></summary>
+<summary><h2>Guides</h2><span class="fold-note">The guides as a list</span></summary>
 ```
 
-<p class="intro">Short, self-contained guides to the tools around the analysis: version control, editors, LaTeX, building a package, and two methods primers.</p>
+<p class="intro">Guides to research methods, AI agents, and tools for analysis and writing.</p>
 
 {{< include _includes/guides.qmd >}}
 

@@ -11,7 +11,7 @@ website:
   title: "DSS Training Materials"
   site-url: https://iqss.github.io/dss-training/
   repo-url: https://github.com/IQSS/dss-training
-  description: "Materials from the IQSS Data Science Services workshops and beginner's guides: R, Python, Stata, and the tools around them."
+  description: "Materials from the IQSS Data Science Services workshops and guides: R, Python, Stata, AI agents, and research tools."
   favicon: assets/favicon.png
   open-graph: true
   search: false
