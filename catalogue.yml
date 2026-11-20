@@ -12,7 +12,7 @@ languages:
   r:      { name: R,                 color: "#3C72B4" }
   python: { name: Python,            color: "#C4963C" }
   stata:  { name: Stata,             color: "#7A5C93" }
-  ai:     { name: AI,                color: "#A65349" }
+  ai:     { name: AI,                color: "#B4553E" }
   tools:  { name: Tools and writing, color: "#2F8A8A" }
 
 kinds:
