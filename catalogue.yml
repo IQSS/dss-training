@@ -224,7 +224,7 @@ items:
     lang: tools
     kind: guide
     year: 2024
-    blurb: "Ways to write LaTeX: Overleaf, VS Code, and Emacs compared, with GitHub and Copilot."
+    blurb: "Ways to write LaTeX: Overleaf, VS Code, and Emacs compared, with GitHub."
     links:
       - { text: Open the guide, url: https://iqss.github.io/dss-guides/latex/ }
   - id: overleaf
@@ -309,10 +309,10 @@ elsewhere:
     - { title: Center for Geographical Analysis, text: "GIS and spatial analysis: workshops and courses", url: https://gis.harvard.edu/teaching }
     - { title: FAS Research Computing, text: "The cluster, and training in using it", url: https://rc.fas.harvard.edu/ }
     - { title: Program on Survey Research, text: "Survey design and methods, at IQSS", url: https://psr.iq.harvard.edu/ }
-    - { title: Harvard Chan Bioinformatics Core, text: Bioinformatics training, url: https://bioinformatics.sph.harvard.edu/ }
+    - { title: Harvard Chan Bioinformatics Core, text: Bioinformatics training, url: https://hsph.harvard.edu/research/bioinformatics/ }
     - { title: Digital Arts and Humanities, text: "Digital methods for the humanities, FAS", url: https://digitalhumanities.fas.harvard.edu/ }
-    - { title: Digital Scholarship Support Group, text: Support across the schools, url: https://dssg.fas.harvard.edu/ }
-    - { title: "Research Computing Services, HBS", text: Statistical and data services at the Business School, url: https://www.hbs.edu/research-computing-services/about-us/statistical-and-data-services.aspx }
+    - { title: Digital Scholarship Group, text: Support across the schools, url: https://dsg.fas.harvard.edu/ }
+    - { title: "Research Computing Services, HBS", text: Statistical and data services at the Business School, url: https://www.hbs.edu/research-computing-services/about-us/statistical-and-data-services }
     - { title: "Research Support Services, HGSE", text: Research support at the Graduate School of Education, url: https://its.gse.harvard.edu/services/research }
   afield:
     - { title: UCLA statistical methods and data analytics, text: "Worked examples in R, Stata, and more, from UCLA's OARC", url: https://stats.oarc.ucla.edu/ }
